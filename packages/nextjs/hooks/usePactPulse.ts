@@ -49,13 +49,13 @@ const DESCRIBE: Record<PulseEvent["kind"], (args: EventArgs) => string> = {
     const who = addressLabel(args, "contributor");
     return who ? `${pactLabel(args)} claimed by ${who}` : `${pactLabel(args)} claimed`;
   },
-  proof: args => `${pactLabel(args)} — proof submitted for review`,
+  proof: args => `${pactLabel(args)} · proof submitted for review`,
   released: args => {
     const who = addressLabel(args, "contributor");
     return [`${pactLabel(args)} released`, monLabel(args), who && `to ${who}`].filter(Boolean).join(" · ");
   },
-  cancelled: args => `${pactLabel(args)} cancelled — bounty refunded`,
-  reclaimed: args => `${pactLabel(args)} reclaimed — deadline passed`,
+  cancelled: args => `${pactLabel(args)} cancelled · bounty refunded`,
+  reclaimed: args => `${pactLabel(args)} reclaimed · deadline passed`,
 };
 
 export function usePactPulse(limit: number = 6) {

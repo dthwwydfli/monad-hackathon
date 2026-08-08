@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { LifecycleWalkthrough } from "~~/components/landing/LifecycleWalkthrough";
 import { TryItSection } from "~~/components/landing/demo/TryItSection";
@@ -13,7 +11,7 @@ export default function HowItWorksPage() {
       <div className="max-w-3xl">
         <h1 className="text-3xl font-medium">How it works</h1>
         <p className="mt-2 text-[var(--muted-foreground)]">
-          Four steps from funded issue to released bounty — all on Monad Testnet. Play both sides below, then read the
+          Four steps from funded issue to released bounty, all on Monad Testnet. Play both sides below, then read the
           real rules underneath.
         </p>
       </div>

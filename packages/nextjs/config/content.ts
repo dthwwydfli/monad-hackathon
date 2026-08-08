@@ -4,7 +4,7 @@ export const content = {
   heroEyebrow: "MONAD TESTNET · FUNDED GITHUB ISSUES",
   heroHeadline: "Get paid for GitHub work that's already funded.",
   heroBody:
-    "Lock testnet tokens on an issue — or claim one that's already funded. Ship the fix on GitHub, post a proof link, and get paid when the maintainer releases it. All visible on-chain.",
+    "Lock testnet tokens on an issue, or claim one that's already funded. Ship the fix on GitHub, post a proof link, and get paid when the maintainer releases it. All visible on-chain.",
   headline: "Fund the issue. Everyone can see it.",
   body: "commit is a public bounty board for GitHub issues. GitHub is where you review the code. The chain shows who funded what, who claimed it, and whether it was paid.",
   testnetNote: "Prototype only. Testnet MON has no cash value.",
@@ -22,7 +22,7 @@ export const content = {
   },
   demo: {
     headline: "Two sides. Play both.",
-    body: "Fund an issue on the left, take it on from the right. Type any GitHub URL and any amount — this whole panel is a simulation, so nothing here touches a wallet or the chain.",
+    body: "Fund an issue on the left, take it on from the right. Type any GitHub URL and any amount. This whole panel is a simulation, so nothing here touches a wallet or the chain.",
     disclaimer:
       "Simulated end to end. On Monad Testnet there is no AI reviewer and no auto-payout: a human maintainer reads the proof on GitHub and releases the bounty themselves.",
     fund: {
@@ -82,7 +82,7 @@ export const content = {
         body: "A contributor sees the funded issue and claims it.",
         actor: "Contributor",
         records: "The contributor's wallet address, tied to this issue.",
-        irreversible: "One person per issue. Public and exclusive — nobody else can claim, and you cannot un-claim.",
+        irreversible: "One person per issue. Public and exclusive. Nobody else can claim, and you cannot un-claim.",
       },
       {
         title: "Post the proof.",
@@ -112,7 +112,7 @@ export const content = {
     limitation:
       "commit is a testnet demo. It does not read your code, guarantee quality, settle disputes, or create a legal agreement.",
     noDispute:
-      "There is no reject button. After proof is submitted, the maintainer cannot reclaim on the deadline — unreleased bounty stays locked until they release it. People judge the work; the chain only records what happened.",
+      "There is no reject button. After proof is submitted, the maintainer cannot reclaim on the deadline. Unreleased bounty stays locked until they release it. People judge the work; the chain only records what happened.",
     githubNote:
       "GitHub is where you review the code. Monad Testnet shows who funded what, who claimed it, and whether it was paid.",
   },

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { DemoBoard, LedgerErrorNotice, PactCard, PactCardSkeleton } from "~~/components/board/PactCard";
+import { DemoBoard, PactCard, PactCardSkeleton } from "~~/components/board/PactCard";
 import { Button } from "~~/components/ui/button";
 import { usePacts } from "~~/hooks/usePacts";
 import { cn } from "~~/lib/cn";
@@ -31,7 +31,7 @@ function countFor(pacts: PactData[], filter: FilterKey) {
 
 export default function PactsPage() {
   const [filter, setFilter] = useState<FilterKey>("Open");
-  const { pacts, isLoading, isConfigured, refreshing, error, refetch } = usePacts();
+  const { pacts, isLoading, isConfigured, refreshing } = usePacts();
 
   const filtered = useMemo(() => pacts.filter(p => matchesFilter(p.state, filter)), [filter, pacts]);
 
@@ -89,8 +89,6 @@ export default function PactsPage() {
       </div>
 
       <div className="mt-8 space-y-4">
-        {error && <LedgerErrorNotice message={error} onRetry={() => void refetch()} />}
-
         {showDemo ? (
           <DemoBoard />
         ) : isLoading ? (

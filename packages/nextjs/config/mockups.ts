@@ -118,10 +118,10 @@ export const MOCK_TIMELINE = [
 ];
 
 export const MOCK_PULSE: MockPulseEvent[] = [
-  { id: "1", message: "Pact #105 released — 1.00 MON to 0x5f3c…d291", timestamp: "2m ago" },
-  { id: "2", message: "Pact #104 proof submitted — awaiting review", timestamp: "18m ago" },
+  { id: "1", message: "Pact #105 released · 1.00 MON to 0x5f3c…d291", timestamp: "2m ago" },
+  { id: "2", message: "Pact #104 proof submitted · awaiting review", timestamp: "18m ago" },
   { id: "3", message: "Pact #103 claimed by 0x9c1d…4f82", timestamp: "1h ago" },
-  { id: "4", message: "Pact #102 funded — 0.25 MON locked", timestamp: "3h ago" },
+  { id: "4", message: "Pact #102 funded · 0.25 MON locked", timestamp: "3h ago" },
 ];
 
 export const MOCK_DETAIL = MOCK_PACTS.find(p => p.state === PACT_STATE.Submitted)!;

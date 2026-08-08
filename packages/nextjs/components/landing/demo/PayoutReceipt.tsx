@@ -31,13 +31,13 @@ export function PayoutReceipt({ flow }: { flow: DemoFlow }) {
 
       <dl className="mt-4 space-y-2.5 border-t border-[var(--rule)] pt-4 text-xs">
         <Row label={copy.from} mono value={maintainer} />
-        <Row label={copy.to} mono value={contributor ?? "—"} />
+        <Row label={copy.to} mono value={contributor ?? "-"} />
         <Row label={copy.issue} mono value={state.issueUrl} />
         <Row label={copy.proof} mono value={state.proofUrl} />
         <Row label={copy.verdict} value={content.demo.scan.verdict} />
         <Row label={copy.confidence} mono value={DEMO_CONFIDENCE} />
-        <Row label={copy.tx} mono value={state.releaseTx ?? "—"} />
-        <Row label={copy.settled} value={state.settledAt ?? "—"} />
+        <Row label={copy.tx} mono value={state.releaseTx ?? "-"} />
+        <Row label={copy.settled} value={state.settledAt ?? "-"} />
       </dl>
 
       <p className="mt-4 border-t border-[var(--rule)] pt-3 text-xs text-[var(--muted-foreground)]">

@@ -23,7 +23,7 @@ export function ProofStrip() {
       ),
     },
     { label: "Network", value: <span className="font-mono text-sm">Monad Testnet · {MONAD_TESTNET_CHAIN_ID}</span> },
-    { label: "Backend", value: <span className="font-mono text-sm">None — contract reads only</span> },
+    { label: "Backend", value: <span className="font-mono text-sm">None · contract reads only</span> },
     { label: "Source", value: <span className="font-mono text-sm">Public repository</span> },
   ];
 
