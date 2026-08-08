@@ -1,0 +1,34 @@
+{
+  "decision": "NO-GO",
+  "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+  "environment": "local-dev | local-anvil | monad-testnet-not-deployed",
+  "timestamp_utc": "2026-08-08T14:13:00Z",
+  "critical_failures": [
+    "CONTRACT-005: NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS empty in .env.local",
+    "SUB-002: README contract address still placeholder (fund deployer wallet)"
+  ],
+  "critical_blocked": [
+    "FUNC-008: Monad testnet create/claim E2E",
+    "FUNC-009: /wall live counters from chain on testnet",
+    "SUB-003: Public deployed app URL not documented"
+  ],
+  "high_failures": [],
+  "passed": 33,
+  "failed": 2,
+  "blocked": 3,
+  "not_applicable": 8,
+  "not_tested": 0,
+  "flaky_tests": [],
+  "evidence_directory": "quality-gates/evidence",
+  "strongest_evidence": [
+    "HEALTH-004: 15/15 MergePact Foundry tests PASS (run twice, identical results)",
+    "HEALTH-002: /preview runtime error fixed — HTTP 200, no tailwind-merge module error after yarn install",
+    "HEALTH-006: Production build exit 0 with /preview route generated"
+  ],
+  "biggest_risks": [
+    "No Monad Testnet contract deployed — live board/wall cannot show real chain data",
+    "No public HTTPS URL — judges cannot reach demo on mobile data",
+    "README submission fields still placeholders until deploy + Vercel"
+  ],
+  "next_command": "cd packages/foundry && DEPLOYER_PRIVATE_KEY=0x... forge script script/DeployMergePactBroadcast.s.sol:DeployMergePactBroadcast --rpc-url https://testnet-rpc.monad.xyz --broadcast && node scripts-js/generateTsAbis.js && echo 'NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x...' >> ../nextjs/.env.local && cd ../nextjs && yarn vercel:yolo"
+}

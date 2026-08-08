@@ -1,0 +1,4 @@
+=== CONTRACT-005 testnet contract configured ===
+var missing
+result: FAIL
+actual: env var empty or unset

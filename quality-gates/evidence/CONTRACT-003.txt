@@ -1,0 +1,6 @@
+=== CONTRACT-003 deployedContracts has MergePact ===
+878:    MergePact: {
+976:              internalType: "struct MergePact.Pact",
+1006:                  internalType: "enum MergePact.PactState",
+1336:      deploymentScript: "DeployMergePactBroadcast.s.sol",
+result: PASS

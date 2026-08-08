@@ -1,0 +1,53 @@
+=== QUALITY GATE EVIDENCE ===
+criterion_id: ENG-001
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+environment: local | branch: main | node: v24.14.0
+timestamp: 2026-08-08T11:41:15Z
+command: node .yarn/releases/yarn-3.2.3.cjs next:lint
+--- output ---
+
+./app/claim/page.tsx
+3:8  Warning: Insert `{·Suspense,·useEffect·}·from·"react";⏎import·`  prettier/prettier
+5:10  Warning: Replace `useEffect,·Suspense·}·from·"reac` with `ConnectButton·}·from·"@rainbow-me/rainbowki`  prettier/prettier
+6:10  Warning: Replace `ConnectButton·}·from·"@rainbow-me/rainbowkit` with `useAccount,·useChainId·}·from·"wagmi`  prettier/prettier
+13:22  Warning: Replace `getExplorerTxUrl,·MONAD_TESTNET_CHAIN_ID·}·from·"~~/lib/monad";⏎import·{·useAccount,·useChainId·}·from·"wagmi` with `MONAD_TESTNET_CHAIN_ID,·getExplorerTxUrl·}·from·"~~/lib/monad`  prettier/prettier
+
+./app/code/page.tsx
+3:8  Warning: Insert `{·FormEvent,·useState·}·from·"react";⏎import·`  prettier/prettier
+4:43  Warning: Delete `";⏎import·{·FormEvent,·useState·}·from·"react`  prettier/prettier
+
+./app/how-it-works/page.tsx
+64:62  Warning: Replace `·<code·className="font-mono·text-sm">claimsByCheckpoint</code>{"·"}⏎·········` with `{"·"}⏎··········<code·className="font-mono·text-sm">claimsByCheckpoint</code>`  prettier/prettier
+
+./app/layout.tsx
+1:1  Warning: Insert `import·{·Bricolage_Grotesque·}·from·"next/font/google";⏎`  prettier/prettier
+4:63  Warning: Delete `";⏎import·{·Bricolage_Grotesque·}·from·"next/font/google`  prettier/prettier
+
+./app/passport/page.tsx
+3:8  Warning: Replace `Link·from·"next/link` with `{·useState·}·from·"react`  prettier/prettier
+4:8  Warning: Replace `{·useState·}·from·"react` with `Link·from·"next/link`  prettier/prettier
+5:54  Warning: Insert `";⏎import·{·useChainId·}·from·"wagmi`  prettier/prettier
+10:10  Warning: Replace `getExplorerAddressUrl,·MONAD_TESTNET_CHAIN_ID·}·from·"~~/lib/monad";⏎import·{·useChainId·}·from·"wagmi` with `MONAD_TESTNET_CHAIN_ID,·getExplorerAddressUrl·}·from·"~~/lib/monad`  prettier/prettier
+
+./app/quest/page.tsx
+4:10  Warning: Insert `useAccount,·useChainId·}·from·"wagmi";⏎import·{·`  prettier/prettier
+10:53  Warning: Delete `";⏎import·{·useAccount,·useChainId·}·from·"wagmi`  prettier/prettier
+
+./app/wall/page.tsx
+27:16  Warning: Replace `·className="sq-btn·sq-btn-secondary·min-h-12"·onClick={()·=>·setFullscreen(value·=>·!value)}·type="button"` with `⏎··········className="sq-btn·sq-btn-secondary·min-h-12"⏎··········onClick={()·=>·setFullscreen(value·=>·!value)}⏎··········type="button"⏎········`  prettier/prettier
+34:24  Warning: Replace `⏎············claimedCount={counts.filter(count·=>·count·>·0n).length}⏎············complete={completedCount·>·0n}⏎·········` with `·claimedCount={counts.filter(count·=>·count·>·0n).length}·complete={completedCount·>·0n}`  prettier/prettier
+
+./components/quest/LandingHero.tsx
+3:8  Warning: Insert `Link·from·"next/link";⏎import·`  prettier/prettier
+4:42  Warning: Insert `";⏎import·{·useScaffoldReadContract·}·from·"~~/hooks/scaffold-eth`  prettier/prettier
+6:53  Warning: Delete `";⏎import·{·useScaffoldReadContract·}·from·"~~/hooks/scaffold-eth";⏎import·Link·from·"next/link`  prettier/prettier
+
+./components/quest/RouteDiagram.tsx
+41:21  Warning: Replace `claimed·?·"var(--verified)"·:·index·===·claimedCount·&&·!complete·?·"var(--beacon)"·:·"var(--paper)"` with `⏎················claimed·?·"var(--verified)"·:·index·===·claimedCount·&&·!complete·?·"var(--beacon)"·:·"var(--paper)"⏎··············`  prettier/prettier
+
+./components/wallet/WalletChip.tsx
+4:10  Warning: Replace `MONAD_TESTNET_CHAIN_ID·}·from·"~~/lib/monad` with `useAccount,·useChainId,·useSwitchChain·}·from·"wagmi`  prettier/prettier
+6:10  Warning: Replace `useAccount,·useChainId,·useSwitchChain·}·from·"wagmi` with `MONAD_TESTNET_CHAIN_ID·}·from·"~~/lib/monad`  prettier/prettier
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+exit_code: 0

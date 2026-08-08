@@ -1,0 +1,3 @@
+=== CONTRACT-004 env var name ===
+NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=
+result: PASS

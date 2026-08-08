@@ -1,0 +1,29 @@
+=== HEALTH-007 lint ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+timestamp_utc: 2026-08-08T14:11:07Z
+command: npm run lint
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+
+> @se-2/nextjs@0.1.0 lint
+> next lint
+
+ ⚠ Found lockfile missing swc dependencies, patching...
+ ⨯ Failed to patch lockfile, please try uninstalling and reinstalling next in this workspace
+Error: Failed to get registry from "yarn".
+    at Array.map (<anonymous>) {
+  [cause]: Error: Command failed: yarn config get registry 
+      at Array.map (<anonymous>) {
+    status: 1,
+    signal: null,
+    output: [
+      null,
+      <Buffer 55 73 61 67 65 20 45 72 72 6f 72 3a 20 43 6f 75 6c 64 6e 27 74 20 66 69 6e 64 20 61 20 63 6f 6e 66 69 67 75 72 61 74 69 6f 6e 20 73 65 74 74 69 6e 67 ... 70 more bytes>,
+      <Buffer >
+    ],
+    pid: 87346,
+    stdout: <Buffer 55 73 61 67 65 20 45 72 72 6f 72 3a 20 43 6f 75 6c 64 6e 27 74 20 66 69 6e 64 20 61 20 63 6f 6e 66 69 67 75 72 61 74 69 6f 6e 20 73 65 74 74 69 6e 67 ... 70 more bytes>,
+    stderr: <Buffer >
+  }
+}
+✔ No ESLint warnings or errors
+exit_code: 0

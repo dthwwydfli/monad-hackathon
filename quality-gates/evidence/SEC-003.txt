@@ -1,0 +1,5 @@
+=== SEC-003 proof URL validation exists ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+73:export function validateProofUrl(proofUrl: string): string | undefined {
+result: PASS
+note: client-side validation only; no server API

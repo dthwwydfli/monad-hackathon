@@ -1,0 +1,5 @@
+=== SUB-003 public deployed URL ===
+65:## Deployed app URL
+67:Deploy via `yarn vercel:yolo` and set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` on Vercel.
+result: BLOCKED
+blocked_reason: no live HTTPS URL documented; Vercel deploy not executed in this gate run

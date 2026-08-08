@@ -1,0 +1,4 @@
+=== SUB-002 README contract address ===
+53:Monad Testnet (MergePact): _fund deployer wallet (~0.6 MON) then deploy_
+result: FAIL
+actual: contract address still placeholder

@@ -1,0 +1,4 @@
+=== SEC-001 no private keys in git ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+match_count: 0
+result: PASS

@@ -1,0 +1,3 @@
+=== SUB-004 /preview in build output ===
+├ ○ /preview                                                                 7.38 kB         164 kB
+result: PASS

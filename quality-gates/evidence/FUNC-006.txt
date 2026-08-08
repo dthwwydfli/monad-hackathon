@@ -1,0 +1,5 @@
+=== FUNC-006 live routes exclude mock data ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+timestamp_utc: 2026-08-08T14:12:06Z
+result: PASS
+actual: mock issue path absent from / and /pacts HTML

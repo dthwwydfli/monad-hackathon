@@ -1,0 +1,5 @@
+[PASS] testSequentialCompletion() (gas: 180528)
+[PASS] testTimeWindowReverts() (gas: 2498749)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 1.50ms (1.12ms CPU time)
+
+Ran 1 test suite in 7.67ms (1.50ms CPU time): 8 tests passed, 0 failed, 0 skipped (8 total tests)

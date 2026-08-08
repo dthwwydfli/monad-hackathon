@@ -1,0 +1,11 @@
+=== CONTRACT-002 ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+No files changed, compilation skipped
+
+Ran 1 test for test/MergePact.t.sol:MergePactTest
+[PASS] testBadDeadlinesBlocked() (gas: 34776)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 423.08µs (66.75µs CPU time)
+
+Ran 1 test suite in 3.56ms (423.08µs CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+exit_code: 0
+result: PASS

@@ -1,0 +1,20 @@
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+branch: main
+node_version: v24.14.0
+timestamp_utc: 2026-08-08T14:09:37Z
+environment: local development (non-production)
+package_manager: yarn@3.2.3 (via node .yarn/releases/yarn-3.2.3.cjs)
+dev_server: http://localhost:3000
+monad_testnet_chain_id: 10143
+database: none (by design — on-chain contract is source of truth)
+external_side_effects: local anvil for contract tests; Monad testnet reads only; no production deploy
+tailwind_merge_installed: yes (node_modules/tailwind-merge/package.json after yarn install)
+
+NOT APPLICABLE rationale:
+- Database connectivity: no database
+- /health/ready, /health/live: no backend server; Next.js SSR/CSR app only
+- Server 401/403 auth: wallet-signed transactions; no server auth layer
+- API injection/rate limiting/CORS: no server API surface
+- Resilience (DB failure, queue DLQ, graceful shutdown): no DB/queue/backend process
+- Performance SLOs (p95/p99): no defined thresholds in project docs
+- Observability (correlation IDs, structured server logs): client-side dApp only

@@ -1,0 +1,8 @@
+=== HEALTH-002-rerun ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+timestamp_utc: 2026-08-08T14:12:21Z
+command: curl /preview + runtime error check
+http_code: 200
+result: PASS
+note: no runtime error; banner client-rendered
+exit_code: 0

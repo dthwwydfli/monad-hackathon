@@ -1,0 +1,11 @@
+=== AUTHZ-003 ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+No files changed, compilation skipped
+
+Ran 1 test for test/MergePact.t.sol:MergePactTest
+[PASS] testReleaseRoleCheck() (gas: 342002)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 416.25µs (77.71µs CPU time)
+
+Ran 1 test suite in 4.40ms (416.25µs CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+exit_code: 0
+result: PASS

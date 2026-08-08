@@ -1,0 +1,10 @@
+=== HEALTH-005 typecheck ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+timestamp_utc: 2026-08-08T14:11:08Z
+command: npm run check-types
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+
+> @se-2/nextjs@0.1.0 check-types
+> tsc --noEmit --incremental
+
+exit_code: 0

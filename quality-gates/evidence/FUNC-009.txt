@@ -1,0 +1,3 @@
+=== FUNC-009 /wall live counters ===
+result: BLOCKED
+blocked_reason: NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS empty or contract not on testnet

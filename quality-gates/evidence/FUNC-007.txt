@@ -1,0 +1,4 @@
+=== FUNC-007 preview mock labeling ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+result: PASS
+note: label is client-rendered; page loads HTTP 200 without runtime error (verified HEALTH-002)

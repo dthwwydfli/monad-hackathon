@@ -1,0 +1,5 @@
+=== SEC-002 .env.local gitignored ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+packages/nextjs/.env.local
+exit_code: 0
+result: PASS

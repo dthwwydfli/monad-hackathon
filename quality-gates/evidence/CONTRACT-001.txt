@@ -1,0 +1,11 @@
+=== CONTRACT-001 ===
+commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
+No files changed, compilation skipped
+
+Ran 1 test for test/MergePact.t.sol:MergePactTest
+[PASS] testZeroBountyBlocked() (gas: 15248)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 371.75µs (37.21µs CPU time)
+
+Ran 1 test suite in 3.48ms (371.75µs CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+exit_code: 0
+result: PASS

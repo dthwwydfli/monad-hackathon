@@ -1,0 +1,3 @@
+=== FUNC-008 Monad testnet E2E ===
+result: BLOCKED
+blocked_reason: testnet contract not deployed; deployer wallet needs ~0.6 MON
