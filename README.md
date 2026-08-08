@@ -98,6 +98,10 @@ yarn foundry:test --match-contract MergePactTest
 - [Demo script](docs/DEMO_SCRIPT.md)
 - [Submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
+## Contributing
+
+Fork the repo, open a branch from `main`, and send a pull request. Keep changes focused and run `yarn foundry:test` before opening.
+
 ## Credits
 
 Built for Monad Blitz London hackathon. **commit** (MergePact contract).
