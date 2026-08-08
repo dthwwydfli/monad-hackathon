@@ -1,3 +1,6 @@
-=== FUNC-009 /wall live counters ===
-result: BLOCKED
-blocked_reason: NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS empty or contract not on testnet
+gate: FUNC-009
+commit: e69487b3756784183029658f103df35a740797ff
+timestamp: 2026-08-08T14:21:51.918Z
+command: cast code + /wall E2E
+cast code: 0x (no bytecode at configured address)
+result: BLOCKED — live counters require on-chain contract

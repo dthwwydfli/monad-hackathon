@@ -1,0 +1,5 @@
+deployer: 0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6
+balance_wei: 127641013990205332
+simulated_address: 0x0091e2766bc15f02a058987fcb4afa114c7e88f8
+broadcast: FAILED insufficient balance
+faucet: https://testnet.monad.xyz/

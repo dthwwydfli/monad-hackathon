@@ -1,34 +1,33 @@
 {
   "decision": "NO-GO",
-  "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
-  "environment": "local-dev | local-anvil | monad-testnet-not-deployed",
-  "timestamp_utc": "2026-08-08T14:13:00Z",
-  "critical_failures": [
-    "CONTRACT-005: NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS empty in .env.local",
-    "SUB-002: README contract address still placeholder (fund deployer wallet)"
-  ],
+  "commit_sha": "e69487b3756784183029658f103df35a740797ff",
+  "environment": "local-dev | monad-testnet-pending-broadcast | vercel-not-deployed",
+  "timestamp_utc": "2026-08-08T14:22:00Z",
+  "critical_failures": [],
   "critical_blocked": [
-    "FUNC-008: Monad testnet create/claim E2E",
-    "FUNC-009: /wall live counters from chain on testnet",
-    "SUB-003: Public deployed app URL not documented"
+    "FUNC-008: Monad testnet create/claim E2E — contract not on chain (deployer ~0.128 MON, needs ~0.28 MON)",
+    "FUNC-009: /wall live counters from chain — cast code returns 0x at configured address",
+    "SUB-003: Public deployed app URL not documented — Vercel CLI token invalid"
   ],
   "high_failures": [],
-  "passed": 33,
-  "failed": 2,
+  "passed": 32,
+  "failed": 0,
   "blocked": 3,
   "not_applicable": 8,
   "not_tested": 0,
   "flaky_tests": [],
   "evidence_directory": "quality-gates/evidence",
   "strongest_evidence": [
-    "HEALTH-004: 15/15 MergePact Foundry tests PASS (run twice, identical results)",
-    "HEALTH-002: /preview runtime error fixed — HTTP 200, no tailwind-merge module error after yarn install",
-    "HEALTH-006: Production build exit 0 with /preview route generated"
+    "HEALTH-004: 15/15 MergePact Foundry tests PASS",
+    "HEALTH-006: Production build exit 0 with new hero landing route",
+    "HERO-001: Mercury-style HeroSection + nature image + full-bleed shell on /",
+    "CONTRACT-005: NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS set in .env.local",
+    "SUB-002: README lists concrete 0x0091e2766bc15f02a058987fcb4afa114c7e88f8"
   ],
   "biggest_risks": [
-    "No Monad Testnet contract deployed — live board/wall cannot show real chain data",
-    "No public HTTPS URL — judges cannot reach demo on mobile data",
-    "README submission fields still placeholders until deploy + Vercel"
+    "Contract broadcast pending — deployer wallet needs ~0.15 MON more via Monad testnet faucet",
+    "No public HTTPS URL — run vercel login then yarn vercel:yolo",
+    "Configured address has no on-chain bytecode until broadcast succeeds"
   ],
-  "next_command": "cd packages/foundry && DEPLOYER_PRIVATE_KEY=0x... forge script script/DeployMergePactBroadcast.s.sol:DeployMergePactBroadcast --rpc-url https://testnet-rpc.monad.xyz --broadcast && node scripts-js/generateTsAbis.js && echo 'NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x...' >> ../nextjs/.env.local && cd ../nextjs && yarn vercel:yolo"
+  "next_command": "Fund 0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6 at https://testnet.monad.xyz/ then: cd packages/foundry && source .env && forge script script/DeployMergePactBroadcast.s.sol:DeployMergePactBroadcast --rpc-url https://testnet-rpc.monad.xyz --broadcast --legacy && node scripts-js/generateTsAbis.js && cd ../nextjs && vercel login && node ../../.yarn/releases/yarn-3.2.3.cjs vercel:yolo"
 }

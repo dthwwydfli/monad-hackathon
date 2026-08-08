@@ -1,4 +1,7 @@
-=== SUB-002 README contract address ===
-53:Monad Testnet (MergePact): _fund deployer wallet (~0.6 MON) then deploy_
-result: FAIL
-actual: contract address still placeholder
+gate: SUB-002
+commit: e69487b3756784183029658f103df35a740797ff
+timestamp: 2026-08-08T14:21:51.918Z
+command: rg 'fund deployer|TBD' README.md
+exit_code: 1 (no matches)
+README address line: Monad Testnet (MergePact): 0x0091e2766bc15f02a058987fcb4afa114c7e88f8
+result: PASS

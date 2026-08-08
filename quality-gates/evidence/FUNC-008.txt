@@ -1,3 +1,8 @@
-=== FUNC-008 Monad testnet E2E ===
-result: BLOCKED
-blocked_reason: testnet contract not deployed; deployer wallet needs ~0.6 MON
+gate: FUNC-008
+commit: e69487b3756784183029658f103df35a740797ff
+timestamp: 2026-08-08T14:21:51.918Z
+command: forge broadcast DeployMergePactBroadcast + cast code
+balance: 127641013990205332 wei (~0.128 MON)
+deploy gas estimate: ~0.28 MON
+cast code 0x0091e2766bc15f02a058987fcb4afa114c7e88f8: 0x
+result: BLOCKED — contract not deployed on Monad testnet

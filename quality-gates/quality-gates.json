@@ -8,7 +8,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-001.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -21,11 +21,13 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-002.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0,
     "note": "Banner text is client-rendered; curl cannot verify 'Product preview' in initial HTML",
-    "flaky_reruns": ["quality-gates/evidence/HEALTH-002-rerun.txt"]
+    "flaky_reruns": [
+      "quality-gates/evidence/HEALTH-002-rerun.txt"
+    ]
   },
   {
     "id": "HEALTH-003",
@@ -36,7 +38,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-003.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -49,10 +51,12 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-004.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0,
-    "flaky_reruns": ["quality-gates/evidence/HEALTH-004-rerun2.txt"]
+    "flaky_reruns": [
+      "quality-gates/evidence/HEALTH-004-rerun2.txt"
+    ]
   },
   {
     "id": "HEALTH-005",
@@ -63,7 +67,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-005.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -76,7 +80,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-006.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -89,7 +93,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/HEALTH-007.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -102,7 +106,8 @@
     "severity": "critical",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "MergePact has no database; on-chain contract is source of truth"
+    "rationale": "MergePact has no database; on-chain contract is source of truth",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "HEALTH-N/A-READY",
@@ -113,7 +118,8 @@
     "severity": "critical",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "No backend server; Next.js SSR/CSR app only"
+    "rationale": "No backend server; Next.js SSR/CSR app only",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "HEALTH-N/A-LIVE",
@@ -124,7 +130,8 @@
     "severity": "critical",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "No backend server"
+    "rationale": "No backend server",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "FUNC-001",
@@ -135,7 +142,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-001.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -148,7 +155,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-002.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -161,7 +168,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-003.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -174,7 +181,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-004.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -187,7 +194,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-005.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -200,7 +207,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-006.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -213,7 +220,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/FUNC-007.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -226,10 +233,10 @@
     "severity": "critical",
     "result": "BLOCKED",
     "evidence_file": "quality-gates/evidence/FUNC-008.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "monad-testnet",
     "blocks_deployment": true,
-    "blocked_reason": "Testnet contract not deployed; deployer wallet needs ~0.6 MON"
+    "blocked_reason": "Broadcast failed: deployer has ~0.128 MON, needs ~0.28 MON; cast code returns 0x"
   },
   {
     "id": "FUNC-009",
@@ -240,10 +247,10 @@
     "severity": "critical",
     "result": "BLOCKED",
     "evidence_file": "quality-gates/evidence/FUNC-009.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "monad-testnet",
     "blocks_deployment": true,
-    "blocked_reason": "NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS empty"
+    "blocked_reason": "No bytecode at configured address on chain 10143"
   },
   {
     "id": "AUTH-N/A",
@@ -254,7 +261,8 @@
     "severity": "critical",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "Wallet-signed transactions; no server auth layer"
+    "rationale": "Wallet-signed transactions; no server auth layer",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "AUTHZ-001",
@@ -265,7 +273,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/AUTHZ-001.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -278,7 +286,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/AUTHZ-002.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -291,7 +299,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/AUTHZ-003.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -304,7 +312,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/AUTHZ-004.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -317,7 +325,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/CONTRACT-001.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -330,7 +338,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/CONTRACT-002.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-anvil",
     "exit_code": 0
   },
@@ -343,7 +351,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/CONTRACT-003.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -356,7 +364,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/CONTRACT-004.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -367,12 +375,12 @@
     "test_command": "grep NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS packages/nextjs/.env.local",
     "expected": "non-empty 0x address",
     "severity": "critical",
-    "result": "FAIL",
+    "result": "PASS",
     "evidence_file": "quality-gates/evidence/CONTRACT-005.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "monad-testnet",
-    "blocks_deployment": true,
-    "actual": "env var empty or unset"
+    "blocks_deployment": false,
+    "actual": "0x0091e2766bc15f02a058987fcb4afa114c7e88f8 in .env.local"
   },
   {
     "id": "SEC-001",
@@ -383,7 +391,7 @@
     "severity": "critical",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SEC-001.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0,
     "match_count": 0
@@ -397,7 +405,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SEC-002.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -410,7 +418,7 @@
     "severity": "medium",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SEC-003.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -423,7 +431,8 @@
     "severity": "high",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "No server API surface"
+    "rationale": "No server API surface",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "RES-N/A",
@@ -434,7 +443,8 @@
     "severity": "medium",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "No database, queue, or long-running backend"
+    "rationale": "No database, queue, or long-running backend",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "PERF-N/A",
@@ -445,7 +455,8 @@
     "severity": "medium",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "No defined SLO thresholds in project"
+    "rationale": "No defined SLO thresholds in project",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "OBS-N/A",
@@ -456,7 +467,8 @@
     "severity": "medium",
     "result": "NOT APPLICABLE",
     "evidence_file": "quality-gates/environment.txt",
-    "rationale": "Client-side dApp only"
+    "rationale": "Client-side dApp only",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff"
   },
   {
     "id": "SUB-001",
@@ -467,7 +479,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SUB-001.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -478,12 +490,12 @@
     "test_command": "rg 'fund deployer|TBD' README.md",
     "expected": "concrete 0x address, not placeholder",
     "severity": "critical",
-    "result": "FAIL",
+    "result": "PASS",
     "evidence_file": "quality-gates/evidence/SUB-002.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "monad-testnet",
-    "blocks_deployment": true,
-    "actual": "README still says 'fund deployer wallet (~0.6 MON) then deploy'"
+    "blocks_deployment": false,
+    "actual": "0x0091e2766bc15f02a058987fcb4afa114c7e88f8 documented"
   },
   {
     "id": "SUB-003",
@@ -494,10 +506,11 @@
     "severity": "critical",
     "result": "BLOCKED",
     "evidence_file": "quality-gates/evidence/SUB-003.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "production",
     "blocks_deployment": true,
-    "blocked_reason": "Vercel deploy not executed; no live HTTPS URL"
+    "blocked_reason": "Vercel CLI token invalid; vercel login required",
+    "actual": "No HTTPS URL in README"
   },
   {
     "id": "SUB-004",
@@ -508,7 +521,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SUB-004.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -521,7 +534,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SMOKE-create.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -534,7 +547,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SMOKE-wall.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   },
@@ -547,7 +560,7 @@
     "severity": "high",
     "result": "PASS",
     "evidence_file": "quality-gates/evidence/SMOKE-how-it-works.txt",
-    "commit_sha": "a51126af62eda030123e8a2b2715fb2addbcc04e",
+    "commit_sha": "e69487b3756784183029658f103df35a740797ff",
     "environment": "local-dev",
     "exit_code": 0
   }

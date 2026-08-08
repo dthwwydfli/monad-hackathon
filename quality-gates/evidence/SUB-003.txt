@@ -1,5 +1,7 @@
-=== SUB-003 public deployed URL ===
-65:## Deployed app URL
-67:Deploy via `yarn vercel:yolo` and set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` on Vercel.
-result: BLOCKED
-blocked_reason: no live HTTPS URL documented; Vercel deploy not executed in this gate run
+gate: SUB-003
+commit: e69487b3756784183029658f103df35a740797ff
+timestamp: 2026-08-08T14:21:51.918Z
+command: yarn vercel:yolo --yes
+output: Error: The specified token is not valid. Use vercel login to generate a new token.
+MCP list_projects: 0 projects in team
+result: BLOCKED — no live HTTPS URL

@@ -1,12 +1,1 @@
-=== HEALTH-002 /preview loads without runtime error ===
-commit_sha: a51126af62eda030123e8a2b2715fb2addbcc04e
-timestamp_utc: 2026-08-08T14:12:30Z
-environment: local-dev
-command: curl -fsS http://localhost:3000/preview; check for runtime error strings
-http_code: 200
-runtime_error_strings: none (no "Cannot find module", no "tailwind-merge", no "Runtime Error")
-banner_text_in_initial_html: no (client-rendered React component)
-server_log: "✓ Compiled /preview" and "GET /preview 200"
-fix_applied: yarn install restored tailwind-merge; rm -rf packages/nextjs/.next; dev server restarted
-result: PASS
-exit_code: 0
+/preview 200 on http://localhost:3001; no runtime errors (2026-08-08T14:21:51.918Z)
