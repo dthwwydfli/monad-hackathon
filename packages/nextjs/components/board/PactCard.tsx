@@ -6,6 +6,9 @@ import { PactStatusStamp } from "~~/components/pact/PactStatusStamp";
 import { Button } from "~~/components/ui/button";
 import { Card, CardContent } from "~~/components/ui/card";
 import { Skeleton } from "~~/components/ui/skeleton";
+import { content } from "~~/config/content";
+import { DEMO_PACTS } from "~~/config/demoPacts";
+import { cn } from "~~/lib/cn";
 import { formatDeadline, formatMon, shortenAddress } from "~~/lib/format";
 import { PACT_STATE, PactData } from "~~/lib/pact";
 import { parseIssuePath } from "~~/lib/validation";
@@ -24,12 +27,22 @@ function boardAction(pact: PactData) {
   }
 }
 
-export function PactCard({ pact }: { pact: PactData }) {
+/**
+ * `demo` renders the card from illustrative data. It must stay visually
+ * distinct and must not link into /pacts/[id], which reads the chain and would
+ * 404 on an id that only exists in the sample set.
+ */
+export function PactCard({ pact, demo = false }: { pact: PactData; demo?: boolean }) {
   const reduced = useReducedMotion();
 
-  const content = (
-    <Card className="mp-card-hover mp-ledger-row transition-all duration-200">
+  const card = (
+    <Card className={cn("transition-all duration-200", demo ? "border-dashed" : "mp-card-hover")}>
       <CardContent className="p-4">
+        {demo && (
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--review)]">
+            Example — not live
+          </p>
+        )}
         <div className="flex flex-wrap items-start justify-between gap-3">
           <PactStatusStamp state={pact.state} />
           <p className="font-mono text-xs">{formatMon(pact.bountyWei)} Testnet MON</p>
@@ -40,14 +53,16 @@ export function PactCard({ pact }: { pact: PactData }) {
           <span>Claim by {formatDeadline(pact.claimDeadline)}</span>
           <span>Maintainer {shortenAddress(pact.maintainer)}</span>
         </div>
-        <Button asChild className="mt-4" variant="secondary">
-          <Link href={`/pacts/${pact.id}`}>{boardAction(pact)}</Link>
-        </Button>
+        {!demo && (
+          <Button asChild className="mt-4" variant="secondary">
+            <Link href={`/pacts/${pact.id}`}>{boardAction(pact)}</Link>
+          </Button>
+        )}
       </CardContent>
     </Card>
   );
 
-  if (reduced) return content;
+  if (reduced || demo) return card;
 
   return (
     <motion.div
@@ -56,7 +71,7 @@ export function PactCard({ pact }: { pact: PactData }) {
       transition={{ duration: 0.25 }}
       whileHover={{ y: -2 }}
     >
-      {content}
+      {card}
     </motion.div>
   );
 }
@@ -78,7 +93,7 @@ export function ExamplePactCard() {
   return (
     <Card className="border-dashed opacity-80">
       <CardContent className="p-4">
-        <p className="font-mono text-xs uppercase tracking-[0.08em]">Example, not live</p>
+        <p className="text-xs uppercase tracking-[0.14em]">Example, not live</p>
         <h3 className="mt-3 font-mono text-sm">org/repo/issues/42</h3>
         <p className="mt-2 text-sm">Show confirmed receipt state after a contract write.</p>
         <p className="mt-4 font-mono text-xs">0.25 Testnet MON · OPEN / FUNDED</p>
@@ -87,18 +102,46 @@ export function ExamplePactCard() {
   );
 }
 
-export function PreviewPromptCard() {
+/**
+ * Shown in place of the live ledger when the contract is unconfigured or the
+ * board is genuinely empty. Replaces the old PreviewPromptCard, which sent the
+ * reader off to a mockup and taught them the product does not work.
+ */
+export function DemoBoard({ limit, className }: { limit?: number; className?: string }) {
+  const pacts = limit ? DEMO_PACTS.slice(0, limit) : DEMO_PACTS;
+
   return (
-    <Card className="border-[var(--action)] bg-[rgba(59,91,219,0.04)]">
-      <CardContent className="p-4">
-        <p className="font-mono text-xs uppercase tracking-[0.08em]">Board is empty</p>
-        <p className="mt-2 text-sm">
-          See a realistic walkthrough with mock pacts on the preview page — no fake data here.
+    <div className={cn("space-y-4", className)}>
+      <div className="flex flex-wrap items-center gap-3 rounded-lg border border-[var(--review)] bg-[rgba(238,155,0,0.14)] px-4 py-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--review)]">
+          Example ledger — not live
         </p>
-        <Button asChild className="mt-4" variant="secondary">
-          <Link href="/preview">View product preview</Link>
+        <p className="text-sm text-[var(--muted-foreground)]">
+          {content.emptyBoard} These cards show what the board looks like in use.
+        </p>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        {pacts.map(pact => (
+          <PactCard demo key={pact.id} pact={pact} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Non-blocking notice that the chain read failed; the stale board stays visible. */
+export function LedgerErrorNotice({ message, onRetry }: { message: string; onRetry?: () => void }) {
+  return (
+    <div
+      className="flex flex-wrap items-center gap-3 rounded-lg border border-[var(--danger)] bg-[rgba(180,35,24,0.06)] px-4 py-3"
+      role="alert"
+    >
+      <p className="text-sm text-[var(--danger)]">{message}</p>
+      {onRetry && (
+        <Button onClick={onRetry} size="sm" type="button" variant="secondary">
+          Try again
         </Button>
-      </CardContent>
-    </Card>
+      )}
+    </div>
   );
 }

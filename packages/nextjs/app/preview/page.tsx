@@ -14,7 +14,7 @@ import { parseIssuePath } from "~~/lib/validation";
 
 function MockPactCard({ pact }: { pact: MockPact }) {
   return (
-    <Card className="mp-card-hover mp-ledger-row transition-all duration-200">
+    <Card className="mp-card-hover transition-all duration-200">
       <CardContent className="p-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <PactStatusStamp state={pact.state} />
@@ -47,15 +47,15 @@ export default function PreviewPage() {
           className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start"
         >
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.08em]">{content.eyebrow}</p>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight md:text-5xl">{content.headline}</h1>
+            <p className="text-xs uppercase tracking-[0.14em]">{content.eyebrow}</p>
+            <h1 className="mt-4 text-4xl font-medium leading-tight md:text-5xl">{content.headline}</h1>
             <p className="mt-4 max-w-xl text-lg">{content.body}</p>
             <p className="mt-4 text-sm text-[var(--muted-foreground)]">
               This page shows what a populated board looks like. Live routes read the contract only.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button asChild>
-                <Link href="/create">Fund a pact</Link>
+                <Link href="/create">Fund an issue</Link>
               </Button>
               <Button asChild variant="secondary">
                 <Link href="/pacts">Browse live board</Link>
@@ -65,7 +65,7 @@ export default function PreviewPage() {
 
           <div>
             <StatStrip counts={MOCK_SUMMARY} animated />
-            <p className="mt-4 font-mono text-xs uppercase tracking-[0.08em] text-[var(--muted-foreground)]">
+            <p className="mt-4 text-xs uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
               Mock ledger snapshot
             </p>
             <div className="mt-4 grid gap-4">
@@ -77,9 +77,9 @@ export default function PreviewPage() {
         </motion.section>
 
         <section>
-          <h2 className="text-2xl font-semibold">Full lifecycle board</h2>
+          <h2 className="text-2xl font-medium">Full lifecycle board</h2>
           <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-            Six mock pacts covering every state from open to cancelled.
+            Six mock commits covering every state from open to cancelled.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {MOCK_PACTS.map(pact => (
@@ -89,9 +89,9 @@ export default function PreviewPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold">Lifecycle timeline</h2>
+          <h2 className="text-2xl font-medium">Lifecycle timeline</h2>
           <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-            Funded → claimed → proof → released walkthrough for pact #105.
+            Funded → claimed → proof → released walkthrough for commit #105.
           </p>
           <div className="mt-6 overflow-x-auto">
             <div className="flex min-w-max gap-0">
@@ -99,7 +99,7 @@ export default function PreviewPage() {
                 <div className="flex items-start" key={item.step}>
                   <div className="flex w-44 flex-col items-center px-2 text-center">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full border-2 font-mono text-xs font-semibold ${item.active ? "border-[var(--action)] bg-[var(--action)] text-white" : "border-[var(--rule)]"}`}
+                      className={`flex h-10 w-10 items-center justify-center rounded-full border-2 font-mono text-xs font-semibold ${item.active ? "border-[var(--action)] bg-[var(--action)] text-[var(--on-dark)]" : "border-[var(--rule)]"}`}
                     >
                       {i + 1}
                     </div>
@@ -145,7 +145,7 @@ export default function PreviewPage() {
                   </a>
                 </p>
               )}
-              <div className="rounded-lg border border-[var(--rule)] bg-[rgba(59,91,219,0.04)] p-4">
+              <div className="rounded-lg border border-[var(--rule)] bg-[rgba(10,147,150,0.14)] p-4">
                 <p className="font-semibold">Review on GitHub, then release.</p>
                 <p className="mt-1 text-sm">Release if the proof meets the acceptance sentence.</p>
                 <div className="mt-4 flex flex-wrap gap-3">
@@ -167,7 +167,7 @@ export default function PreviewPage() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="font-mono text-xs uppercase tracking-[0.08em]">Activity pulse</CardTitle>
+                <CardTitle className="text-xs uppercase tracking-[0.14em]">Activity pulse</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 text-sm">

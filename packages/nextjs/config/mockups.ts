@@ -41,8 +41,8 @@ export const MOCK_PACTS: MockPact[] = [
   },
   {
     id: 102,
-    issueUrl: "https://github.com/mergepact/demo/issues/7",
-    acceptance: "Fix pagination on the pact board when more than 20 entries exist.",
+    issueUrl: "https://github.com/commit-dev/demo/issues/7",
+    acceptance: "Fix pagination on the commit board when more than 20 entries exist.",
     bountyMon: "0.25",
     maintainer: "0x4b2e…8a01",
     contributor: "0x0000…0000",
@@ -53,7 +53,7 @@ export const MOCK_PACTS: MockPact[] = [
   {
     id: 103,
     issueUrl: "https://github.com/monad-developers/sdk/issues/34",
-    acceptance: "Implement typed contract read helpers for MergePact state queries.",
+    acceptance: "Implement typed contract read helpers for commit state queries.",
     bountyMon: "0.75",
     maintainer: "0x7a3f…c91e",
     contributor: "0x9c1d…4f82",
@@ -63,7 +63,7 @@ export const MOCK_PACTS: MockPact[] = [
   },
   {
     id: 104,
-    issueUrl: "https://github.com/mergepact/demo/issues/3",
+    issueUrl: "https://github.com/commit-dev/demo/issues/3",
     acceptance: "Add proof URL validation for GitHub pull request links only.",
     bountyMon: "0.15",
     maintainer: "0x4b2e…8a01",
@@ -71,12 +71,12 @@ export const MOCK_PACTS: MockPact[] = [
     state: PACT_STATE.Submitted,
     claimDeadline: "Aug 8, 2026",
     workDeadline: "Aug 14, 2026",
-    proofUrl: "https://github.com/mergepact/demo/pull/18",
+    proofUrl: "https://github.com/commit-dev/demo/pull/18",
   },
   {
     id: 105,
     issueUrl: "https://github.com/monad-developers/docs/issues/8",
-    acceptance: "Document the full pact lifecycle with sequence diagrams.",
+    acceptance: "Document the full commit lifecycle with sequence diagrams.",
     bountyMon: "1.00",
     maintainer: "0x7a3f…c91e",
     contributor: "0x5f3c…d291",
@@ -87,7 +87,7 @@ export const MOCK_PACTS: MockPact[] = [
   },
   {
     id: 106,
-    issueUrl: "https://github.com/mergepact/demo/issues/1",
+    issueUrl: "https://github.com/commit-dev/demo/issues/1",
     acceptance: "Prototype the live wall projection layout for hackathon demo.",
     bountyMon: "0.80",
     maintainer: "0x4b2e…8a01",
@@ -95,7 +95,7 @@ export const MOCK_PACTS: MockPact[] = [
     state: PACT_STATE.Released,
     claimDeadline: "Jul 28, 2026",
     workDeadline: "Aug 4, 2026",
-    proofUrl: "https://github.com/mergepact/demo/pull/12",
+    proofUrl: "https://github.com/commit-dev/demo/pull/12",
   },
   {
     id: 107,

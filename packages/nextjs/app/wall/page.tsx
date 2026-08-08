@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { LedgerBackground } from "~~/components/background/LedgerBackground";
-import { PreviewPromptCard } from "~~/components/board/PactCard";
+import { DemoBoard } from "~~/components/board/PactCard";
 import { PactStatusStamp } from "~~/components/pact/PactStatusStamp";
+import { BorderBeam } from "~~/components/ui/border-beam";
 import { Button } from "~~/components/ui/button";
 import { Card, CardContent } from "~~/components/ui/card";
-import { content } from "~~/config/content";
+import { NumberTicker } from "~~/components/ui/number-ticker";
 import { usePactPulse } from "~~/hooks/usePactPulse";
 import { formatMon } from "~~/lib/format";
 import { STATUS_LABELS } from "~~/lib/pact";
@@ -32,7 +33,9 @@ export default function WallPage() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="flex items-start justify-between gap-6">
           <div>
-            <p className="font-mono text-sm font-semibold uppercase tracking-[0.08em]">MergePact / Live ledger</p>
+            {/* Lowercase lockup, not an eyebrow — the uppercase treatment used
+                elsewhere would spell the wordmark wrong. */}
+            <p className="text-sm font-semibold tracking-[0.14em]">commit / live ledger</p>
             {refreshing && <p className="mt-2 text-sm">Refreshing ledger…</p>}
           </div>
           <Button onClick={() => setFullscreen(v => !v)} type="button" variant="secondary">
@@ -42,13 +45,8 @@ export default function WallPage() {
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[2fr_1fr]">
           <div>
-            {!isConfigured ? (
-              <div className="space-y-4">
-                <p className="font-mono text-sm uppercase">{content.exampleLedger}</p>
-                <PreviewPromptCard />
-              </div>
-            ) : pacts.length === 0 ? (
-              <PreviewPromptCard />
+            {!isConfigured || pacts.length === 0 ? (
+              <DemoBoard limit={4} />
             ) : (
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {pacts.map((pact, i) => (
@@ -73,18 +71,21 @@ export default function WallPage() {
           </div>
 
           <div className="space-y-6">
-            <Card className="text-center">
+            {/* The one number a room full of people is watching, so it gets the
+                only moving border on the page. */}
+            <Card className="relative overflow-hidden text-center">
+              <BorderBeam duration={10} size={80} />
               <CardContent className="p-6">
-                <p className="text-6xl font-semibold tabular-nums">{releasedCount}</p>
+                <NumberTicker className="text-6xl font-medium" value={releasedCount} />
                 <p className="mt-2 text-xl">Testnet bounties released</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4">
-                <p className="font-mono text-xs uppercase tracking-[0.08em]">Activity pulse</p>
+                <p className="text-xs uppercase tracking-[0.14em]">Activity pulse</p>
                 <ul className="mt-4 space-y-3 text-base">
                   {pulseEvents.length === 0 && (
-                    <li className="text-sm text-[var(--muted-foreground)]">Waiting for the first pact…</li>
+                    <li className="text-sm text-[var(--muted-foreground)]">Waiting for the first commit…</li>
                   )}
                   {pulseEvents.map(event => (
                     <motion.li
@@ -101,7 +102,7 @@ export default function WallPage() {
               </CardContent>
             </Card>
             <Button asChild className="w-full" variant="secondary">
-              <Link href="/preview">View product preview</Link>
+              <Link href="/pacts">Open the commit board</Link>
             </Button>
           </div>
         </div>

@@ -76,7 +76,7 @@ export function RoleActionPanel({ pact, onSuccess }: { pact: PactData; onSuccess
     switch (pact.state) {
       case PACT_STATE.Open:
         if (role === "maintainer") {
-          title = claimExpired ? "No contributor claimed before deadline." : "No contributor has claimed this pact.";
+          title = claimExpired ? "No contributor claimed before deadline." : "No contributor has claimed this commit.";
           body = claimExpired ? "You can reclaim the unclaimed bounty." : "Share this page with a contributor.";
           action = claimExpired ? (
             <Button disabled={isPending} onClick={() => reclaimUnclaimed(pact.id)} type="button">
@@ -84,22 +84,22 @@ export function RoleActionPanel({ pact, onSuccess }: { pact: PactData; onSuccess
             </Button>
           ) : (
             <Button disabled={isPending} onClick={() => cancelPact(pact.id)} type="button" variant="secondary">
-              Cancel pact
+              Cancel commit
             </Button>
           );
         } else {
           title = "Ready to take this on?";
-          body = "Review the GitHub issue, then claim this funded pact.";
+          body = "Review the GitHub issue, then claim this funded commit.";
           action = (
             <Button disabled={isPending || claimExpired} onClick={() => claimPact(pact.id)} type="button">
-              Claim this pact
+              Claim this commit
             </Button>
           );
         }
         break;
       case PACT_STATE.Claimed:
         if (role === "contributor") {
-          title = "You own this pact.";
+          title = "You own this commit.";
           body = "Submit a public proof when ready.";
           action = workExpired ? null : <ProofForm pactId={pact.id} onSuccess={onSuccess} />;
         } else if (role === "maintainer") {
@@ -112,6 +112,13 @@ export function RoleActionPanel({ pact, onSuccess }: { pact: PactData; onSuccess
               </Button>
             );
           }
+        } else {
+          title = "This commit is already claimed.";
+          body = workExpired
+            ? "The work deadline has passed. The maintainer can reclaim the bounty."
+            : `A contributor is working on it. Proof is due by ${new Date(
+                Number(pact.workDeadline) * 1000,
+              ).toLocaleString()}.`;
         }
         break;
       case PACT_STATE.Submitted:
@@ -142,6 +149,16 @@ export function RoleActionPanel({ pact, onSuccess }: { pact: PactData; onSuccess
               </Button>
             </div>
           );
+        } else {
+          title = "Proof submitted, awaiting review.";
+          body = "The maintainer reviews on GitHub and releases the bounty if it meets the acceptance sentence.";
+          action = pact.proofUrl ? (
+            <Button asChild variant="secondary">
+              <a href={pact.proofUrl} rel="noreferrer" target="_blank">
+                Open proof
+              </a>
+            </Button>
+          ) : null;
         }
         break;
       case PACT_STATE.Released:
@@ -151,18 +168,26 @@ export function RoleActionPanel({ pact, onSuccess }: { pact: PactData; onSuccess
       case PACT_STATE.Cancelled:
       case PACT_STATE.Reclaimed:
         title = "Terminal record.";
-        body = "This pact cannot be changed.";
+        body = "This commit cannot be changed.";
         break;
     }
   }
 
+  const ROLE_LABEL: Record<typeof role, string> = {
+    none: "Viewing as a visitor",
+    maintainer: "You are the maintainer of this commit",
+    contributor: "You are the assigned contributor",
+    other: "Viewing as a visitor",
+  };
+
   return (
-    <Card className="border-[var(--action)] bg-[rgba(59,91,219,0.03)]">
+    <Card className="border-[var(--action)] bg-[rgba(10,147,150,0.12)]">
       <CardContent className="p-6">
-        <h2 className="text-xl font-semibold">{title}</h2>
+        <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted-foreground)]">{ROLE_LABEL[role]}</p>
+        <h2 className="mt-2 text-xl font-medium">{title}</h2>
         {body && <p className="mt-2 text-sm">{body}</p>}
-        <div className="mt-4">{action}</div>
-        {txHash && <TransactionProgress pending={isPending} txHash={txHash} error={error} />}
+        {action && <div className="mt-4">{action}</div>}
+        <TransactionProgress className="mt-4" error={error} pending={isPending} txHash={txHash} />
       </CardContent>
     </Card>
   );

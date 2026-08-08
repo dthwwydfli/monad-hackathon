@@ -12,6 +12,7 @@ export function usePact(pactId: number) {
   const [pact, setPact] = useState<PactData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const contractAddress = getMergePactContractAddress(MONAD_TESTNET_CHAIN_ID);
   const abi = deployedContracts[10143]?.MergePact?.abi;
@@ -22,6 +23,8 @@ export function usePact(pactId: number) {
       setIsLoading(false);
       return;
     }
+
+    setError(null);
 
     try {
       const total = (await publicClient.readContract({
@@ -46,7 +49,9 @@ export function usePact(pactId: number) {
       setPact(parsePactFromContract(pactId, raw as Parameters<typeof parsePactFromContract>[1]));
       setNotFound(false);
     } catch {
-      setNotFound(true);
+      // A failed read is not the same as a pact that does not exist. Conflating
+      // them made every RPC blip render "This pact does not exist."
+      setError("Unable to reach Monad Testnet right now.");
       setPact(null);
     } finally {
       setIsLoading(false);
@@ -57,5 +62,5 @@ export function usePact(pactId: number) {
     void refetch();
   }, [refetch]);
 
-  return { pact, isLoading, notFound, refetch, isConfigured: Boolean(contractAddress) };
+  return { pact, isLoading, notFound, error, refetch, isConfigured: Boolean(contractAddress) };
 }

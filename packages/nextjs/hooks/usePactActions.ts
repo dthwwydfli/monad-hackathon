@@ -17,7 +17,10 @@ export function usePactActions(onSuccess?: () => void) {
 
   const run = useCallback(
     async (fn: () => Promise<`0x${string}` | undefined>) => {
+      // Both are cleared up front, otherwise the hash from the previous action
+      // stays on screen and the next one appears to have already succeeded.
       setError(null);
+      setTxHash(undefined);
       try {
         const hash = await fn();
         if (!hash || !publicClient) return;

@@ -8,9 +8,15 @@ import { getMergePactContractAddress } from "~~/lib/contract";
 import { MONAD_TESTNET_CHAIN_ID } from "~~/lib/monad";
 import { PactData, parsePactFromContract } from "~~/lib/pact";
 
-export function usePacts(limit: number = demo.maxVisiblePacts) {
+/**
+ * `poll: false` lets a composing hook own the refresh interval instead. Without
+ * it, `usePactPulse` stacked its own 8s timer on top of this one and ran two
+ * full read sweeps per window against the public RPC.
+ */
+export function usePacts(limit: number = demo.maxVisiblePacts, { poll = true }: { poll?: boolean } = {}) {
   const publicClient = usePublicClient({ chainId: MONAD_TESTNET_CHAIN_ID });
   const [pacts, setPacts] = useState<PactData[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,6 +42,7 @@ export function usePacts(limit: number = demo.maxVisiblePacts) {
       })) as bigint;
 
       const count = Number(total);
+      setTotalCount(count);
       if (count === 0) {
         setPacts([]);
         return;
@@ -57,8 +64,8 @@ export function usePacts(limit: number = demo.maxVisiblePacts) {
       );
 
       setPacts(results);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Unable to refresh Monad Testnet right now.");
+    } catch {
+      setError("Unable to reach Monad Testnet right now. The ledger below may be out of date.");
     } finally {
       setIsLoading(false);
       setRefreshing(false);
@@ -70,9 +77,10 @@ export function usePacts(limit: number = demo.maxVisiblePacts) {
   }, [refetch]);
 
   useEffect(() => {
+    if (!poll) return;
     const interval = setInterval(() => void refetch(), 8000);
     return () => clearInterval(interval);
-  }, [refetch]);
+  }, [poll, refetch]);
 
-  return { pacts, isLoading, refreshing, error, refetch, isConfigured: Boolean(contractAddress) };
+  return { pacts, totalCount, isLoading, refreshing, error, refetch, isConfigured: Boolean(contractAddress) };
 }

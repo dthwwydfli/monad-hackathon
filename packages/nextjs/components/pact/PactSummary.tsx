@@ -12,7 +12,7 @@ export function PactSummary({ pact }: { pact: PactData }) {
     <Card>
       <CardContent className="p-6">
         <PactStatusStamp state={pact.state} large />
-        <h1 className="mt-4 text-2xl font-semibold">{parseIssuePath(pact.issueUrl)}</h1>
+        <h1 className="mt-4 text-2xl font-medium">{parseIssuePath(pact.issueUrl)}</h1>
         <a className="link mt-2 inline-block font-mono text-sm" href={pact.issueUrl} rel="noreferrer" target="_blank">
           {pact.issueUrl}
         </a>
@@ -37,7 +37,7 @@ export function PactSummary({ pact }: { pact: PactData }) {
         </dl>
         {pact.proofUrl && (
           <div className="mt-4">
-            <p className="font-mono text-xs uppercase tracking-[0.08em]">Proof</p>
+            <p className="text-xs uppercase tracking-[0.14em]">Proof</p>
             <a
               className="link mt-1 inline-block font-mono text-sm"
               href={pact.proofUrl}
@@ -57,7 +57,7 @@ export function LedgerDisclosure({ pact }: { pact: PactData }) {
   const contractAddress = getMergePactContractAddress(MONAD_TESTNET_CHAIN_ID);
   return (
     <details className="mp-card p-4">
-      <summary className="cursor-pointer font-mono text-xs uppercase tracking-[0.08em]">Ledger record</summary>
+      <summary className="cursor-pointer text-xs uppercase tracking-[0.14em]">Ledger record</summary>
       <dl className="mt-4 space-y-2 font-mono text-xs">
         <div>
           <dt className="opacity-70">Pact ID</dt>
