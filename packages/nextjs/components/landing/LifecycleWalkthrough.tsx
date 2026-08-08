@@ -163,7 +163,7 @@ export function LifecycleWalkthrough({ id = "lifecycle" }: { id?: string }) {
         <h2 className="mt-3 max-w-2xl text-3xl font-medium tracking-tight md:text-4xl">
           Four steps. Two people. No middleman.
         </h2>
-        <p className="mt-4 max-w-2xl text-[var(--muted-foreground)]">Click through below — no wallet needed.</p>
+        <p className="mt-4 max-w-2xl text-[var(--muted-foreground)]">Click through below. No wallet needed.</p>
 
         <div className="mt-10">
           <StepRail active={active} onSelect={select} />
