@@ -8,7 +8,6 @@ export function LedgerBackground({ animated = true, className }: { animated?: bo
       <div
         className={cn("absolute inset-0 mp-gradient-bg", animated && "mp-gradient-animate motion-reduce:animate-none")}
       />
-      <div className="absolute inset-0 mp-grid-overlay opacity-40" />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
@@ -28,18 +27,16 @@ export const queryClient = new QueryClient({
 });
 
 export const ScaffoldEthAppWithProviders = ({ children }: { children: React.ReactNode }) => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  // The shell renders on the server. wagmi is configured with `ssr: true`, so
+  // only the wallet-dependent UI needs a mount guard — it lives in WalletGate.
+  // Gating the whole tree here meant no SSR content at all and a blank first
+  // paint, which was the entire first impression on a cold load.
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <ProgressBar height="3px" color="#3B5BDB" />
+        <ProgressBar height="3px" color="#0A9396" />
         <RainbowKitProvider avatar={BlockieAvatar} theme={lightTheme()}>
-          {mounted ? <MergePactApp>{children}</MergePactApp> : null}
+          <MergePactApp>{children}</MergePactApp>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

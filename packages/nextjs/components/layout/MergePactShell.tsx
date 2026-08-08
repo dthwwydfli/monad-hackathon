@@ -26,9 +26,9 @@ export function MergePactShell({ children }: { children: React.ReactNode }) {
   const headerVariant = isHome && !scrolled ? "hero" : "default";
 
   return (
-    <div className="grain relative min-h-screen">
+    <div className="relative min-h-screen">
       {(isPreview || isWall) && <LedgerBackground animated={!isWall} />}
-      <SiteHeader variant={headerVariant} />
+      <SiteHeader isHome={isHome} variant={headerVariant} />
       <main
         className={cn(
           "relative z-10",
@@ -42,9 +42,17 @@ export function MergePactShell({ children }: { children: React.ReactNode }) {
         <footer className="relative z-10 border-t border-[var(--rule)] px-5 py-8 text-sm">
           <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-4">
             <p>{content.testnetNote}</p>
-            <a className="link" href="https://github.com/dthwwydfli/monad-hackathon" rel="noreferrer" target="_blank">
-              Public repository
-            </a>
+            <div className="flex flex-wrap items-center gap-5">
+              <Link className="link" href="/how-it-works">
+                How it works
+              </Link>
+              <Link className="link" href="/preview">
+                Product preview
+              </Link>
+              <a className="link" href="https://github.com/dthwwydfli/monad-hackathon" rel="noreferrer" target="_blank">
+                Public repository
+              </a>
+            </div>
           </div>
         </footer>
       )}

@@ -3,31 +3,77 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  --shadow-center: 0 0 12px -2px rgb(0 0 0 / 0.05);
-  --shadow-card: 0 4px 24px -4px rgba(23, 32, 51, 0.08);
-  --shadow-card-hover: 0 8px 32px -4px rgba(59, 91, 219, 0.15);
+  /* Separation comes from hairlines and surface fills, not elevation. */
+  --shadow-center: none;
+  --shadow-card: none;
+  --shadow-card-hover: none;
+
+  /* Required by the shadcn/ui Accordion; Radix supplies the height var. */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
 :root {
-  --paper: #f4f1ea;
-  --ink: #172033;
-  --action: #3b5bdb;
-  --confirmed: #b6e34d;
-  --review: #ff6b4a;
-  --rule: rgba(23, 32, 51, 0.16);
-  --danger: #b42318;
-  --gradient-start: #f4f1ea;
-  --gradient-mid: #e8edff;
-  --gradient-end: #f0fbe8;
+  /* --paper / --ink keep their names so the ~70 files that read them need no
+     churn, but they now carry the dark palette: paper is the page ground and
+     ink is the primary text. --bg / --fg are the clearer aliases for new code. */
+  /* Coolors "teal to rust" ten-stop:
+     001219 · 005f73 · 0a9396 · 94d2bd · e9d8a6 · ee9b00 · ca6702 · bb3e03 · ae2012 · 9b2226
+     The ramp carries its own semantics — mint reads settled, amber reads
+     pending, rust reads failed — so the pact states map onto it directly.
+     Only the two surface steps are derived: the palette jumps straight from the
+     ground to #005f73, which is far too saturated to sit a card on. */
+  --paper: #001219;
+  --ink: #e9d8a6;
+  --surface: #04202b;
+  --surface-hover: #0a2f3c;
+  --action: #0a9396;
+  --action-deep: #005f73;
+  --action-tint: #94d2bd;
+  --action-wash: rgba(10, 147, 150, 0.14);
+  /* Foreground for anything sitting on a light or saturated fill. Every accent
+     in this palette is mid-to-light, so filled controls take dark text — the
+     inverse of the previous scheme, where white sat on a deep blurple. */
+  --on-dark: #001219;
+  --confirmed: #94d2bd;
+  --review: #ee9b00;
+  --danger: #bb3e03;
+  --rule: rgba(148, 210, 189, 0.18);
+  --rule-strong: rgba(148, 210, 189, 0.32);
+  --gradient-start: #001219;
+  --gradient-mid: #04202b;
+  --gradient-end: #001219;
   --background: var(--paper);
   --foreground: var(--ink);
+  --bg: var(--paper);
+  --fg: var(--ink);
   --primary: var(--action);
-  --primary-foreground: #ffffff;
-  --muted: rgba(23, 32, 51, 0.06);
-  --muted-foreground: rgba(23, 32, 51, 0.7);
+  --primary-foreground: var(--on-dark);
+  --muted: rgba(148, 210, 189, 0.08);
+  --muted-foreground: rgba(233, 216, 166, 0.72);
+  --subtle-foreground: rgba(233, 216, 166, 0.45);
   --border: var(--rule);
   --ring: var(--action);
-  --radius: 0.5rem;
+  --radius: 0.75rem;
+  --radius-pill: 999px;
 }
 
 @layer base {
@@ -43,6 +89,8 @@
     min-height: 100vh;
     background: var(--paper);
     color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,
@@ -50,7 +98,22 @@
   h3,
   h4 {
     margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  h1 {
     line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
+  h3,
+  h4 {
+    line-height: 1.2;
   }
 
   :focus-visible {
@@ -64,11 +127,8 @@
 }
 
 .mp-gradient-bg {
-  background-color: var(--gradient-start);
-  background-image:
-    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(59, 91, 219, 0.12), transparent 50%),
-    radial-gradient(ellipse 70% 50% at 90% 80%, rgba(182, 227, 77, 0.1), transparent 50%),
-    linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-mid) 45%, var(--gradient-end) 100%);
+  background-color: var(--paper);
+  background-image: radial-gradient(ellipse 90% 70% at 50% 0%, rgba(10, 147, 150, 0.14), transparent 60%);
 }
 
 .mp-gradient-animate {
@@ -77,98 +137,57 @@
 
 @keyframes mp-gradient-shift {
   0% {
-    filter: hue-rotate(0deg);
+    opacity: 0.85;
   }
   100% {
-    filter: hue-rotate(8deg);
+    opacity: 1;
   }
-}
-
-.mp-grid-overlay {
-  background-image:
-    linear-gradient(var(--rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-}
-
-.grain::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.02;
-  background-image: url("/grain.svg");
-  background-size: 200px 200px;
-}
-
-.hero-grain {
-  opacity: 0.11;
-  background-image: url("/grain.svg");
-  background-size: 160px 160px;
-  mix-blend-mode: overlay;
-}
-
-.nav-pill-rail {
-  backdrop-filter: none;
-}
-
-.nav-cta:focus-visible {
-  outline: 2px solid var(--action);
-  outline-offset: 2px;
 }
 
 .mp-card {
-  @apply rounded-lg border border-[var(--ink)] bg-[var(--paper)] shadow-[var(--shadow-card)] transition-shadow duration-200;
+  @apply rounded-xl border border-[var(--rule)] bg-[var(--surface)] transition-colors duration-200;
 }
 
 .mp-card-hover:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: rgba(59, 91, 219, 0.35);
-}
-
-.mp-ledger-row {
-  background-image: linear-gradient(var(--rule) 1px, transparent 1px);
-  background-size: 100% 28px;
-  background-position: 0 12px;
+  border-color: rgba(10, 147, 150, 0.5);
+  background-color: var(--surface-hover);
 }
 
 .mp-btn {
-  @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-base font-semibold transition-all duration-200;
+  @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-base font-medium transition-colors duration-200;
   min-height: 48px;
 }
 
 .mp-btn-action {
   background: var(--action);
-  color: white;
+  color: var(--on-dark);
 }
 
 .mp-btn-action:hover:not(:disabled) {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+  filter: brightness(1.08);
 }
 
 .mp-btn-secondary {
-  @apply border border-[var(--ink)] bg-transparent;
+  @apply border border-[var(--rule)] bg-transparent;
   color: var(--ink);
 }
 
 .mp-btn-secondary:hover:not(:disabled) {
-  background: rgba(59, 91, 219, 0.06);
+  background: rgba(10, 147, 150, 0.14);
 }
 
 .mp-input {
-  @apply rounded-lg border border-[var(--ink)] bg-white px-4 py-3;
+  @apply rounded-xl border border-[var(--rule)] bg-[var(--surface)] px-4 py-3;
   min-height: 48px;
 }
 
 .preview-banner {
-  @apply rounded-lg border border-[var(--review)] bg-[rgba(255,107,74,0.08)] px-4 py-3 text-sm;
+  @apply rounded-xl border border-[var(--review)] bg-[rgba(238,155,0,0.14)] px-4 py-3 text-sm;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mp-btn,
+  .mp-card,
   .mp-card-hover {
     transition: none;
   }
