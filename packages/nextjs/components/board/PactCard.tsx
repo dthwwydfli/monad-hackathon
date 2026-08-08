@@ -40,7 +40,7 @@ export function PactCard({ pact, demo = false }: { pact: PactData; demo?: boolea
       <CardContent className="p-4">
         {demo && (
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--review)]">
-            Example — not live
+            Example, not live
           </p>
         )}
         <div className="flex flex-wrap items-start justify-between gap-3">
@@ -114,7 +114,7 @@ export function DemoBoard({ limit, className }: { limit?: number; className?: st
     <div className={cn("space-y-4", className)}>
       <div className="flex flex-wrap items-center gap-3 rounded-lg border border-[var(--review)] bg-[rgba(238,155,0,0.14)] px-4 py-3">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--review)]">
-          Example ledger — not live
+          Example ledger, not live
         </p>
         <p className="text-sm text-[var(--muted-foreground)]">
           {content.emptyBoard} These cards show what the board looks like in use.
@@ -125,23 +125,6 @@ export function DemoBoard({ limit, className }: { limit?: number; className?: st
           <PactCard demo key={pact.id} pact={pact} />
         ))}
       </div>
-    </div>
-  );
-}
-
-/** Non-blocking notice that the chain read failed; the stale board stays visible. */
-export function LedgerErrorNotice({ message, onRetry }: { message: string; onRetry?: () => void }) {
-  return (
-    <div
-      className="flex flex-wrap items-center gap-3 rounded-lg border border-[var(--danger)] bg-[rgba(180,35,24,0.06)] px-4 py-3"
-      role="alert"
-    >
-      <p className="text-sm text-[var(--danger)]">{message}</p>
-      {onRetry && (
-        <Button onClick={onRetry} size="sm" type="button" variant="secondary">
-          Try again
-        </Button>
-      )}
     </div>
   );
 }

@@ -37,7 +37,7 @@ export default function PreviewPage() {
       <LedgerBackground />
       <div className="relative z-10 space-y-12 px-5 py-8">
         <div className="preview-banner" role="status">
-          <strong>Product preview</strong> — illustrative mockups only, not live Monad data.
+          <strong>Product preview</strong>: illustrative mockups only, not live Monad data.
         </div>
 
         <motion.section
@@ -117,7 +117,7 @@ export default function PreviewPage() {
         <section className="grid gap-8 lg:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Detail view — awaiting review</CardTitle>
+              <CardTitle>Detail view: awaiting review</CardTitle>
               <p className="text-sm text-[var(--muted-foreground)]">
                 Static role-action UI. No wallet writes on this page.
               </p>
