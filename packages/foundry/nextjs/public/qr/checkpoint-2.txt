@@ -1,0 +1,1 @@
+http://localhost:3000/claim?quest=1&checkpoint=2
