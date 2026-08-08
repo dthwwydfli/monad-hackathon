@@ -8,36 +8,40 @@ import { Button } from "~~/components/ui/button";
 import { content } from "~~/config/content";
 import { cn } from "~~/lib/cn";
 
+/**
+ * Near-full viewport, centred column. The photograph carries the lower half, so
+ * the type sits in the upper third rather than dead centre — otherwise the
+ * headline lands on the ridgeline and stops reading.
+ */
+const HERO_HEIGHT = "min-h-[min(92vh,880px)]";
+
 function HeroContent({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative z-[2] mx-auto flex min-h-[min(92vh,880px)] max-w-[1180px] flex-col justify-end px-5 pb-16 pt-28 md:justify-center md:px-10 md:pb-20 md:pt-32 lg:pb-24",
+        "relative z-[2] mx-auto flex max-w-[1180px] flex-col items-center px-5 pb-16 pt-32 text-center md:px-10 md:pt-[18vh]",
+        HERO_HEIGHT,
         className,
       )}
     >
-      <p className="font-mono text-xs uppercase tracking-[0.08em] text-white/70">{content.heroEyebrow}</p>
-      <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
+      <h1 className="max-w-[18ch] text-4xl font-medium leading-[1.1] tracking-[-0.01em] text-white md:text-5xl lg:text-[3.5rem]">
         {content.heroHeadline}
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">{content.heroBody}</p>
-      <TestnetNotice compact className="mt-4 text-white/60" />
-      <div className="mt-8 flex flex-wrap gap-4">
+
+      <div className="mt-9 flex flex-wrap justify-center gap-3">
         <Button asChild size="lg">
-          <Link href="/create">Fund a pact</Link>
+          <Link href="#lifecycle">See how a commit works</Link>
         </Button>
         <Button
           asChild
-          className="border-white/45 bg-white/10 text-white hover:bg-white/20"
+          className="border-white/40 bg-white/10 text-white hover:bg-white/20"
           size="lg"
           variant="secondary"
         >
-          <Link href="/pacts">Browse open pacts</Link>
+          <Link href="/pacts">Browse open commits</Link>
         </Button>
       </div>
-      <p className="mt-10 hidden max-w-md font-mono text-xs uppercase tracking-[0.08em] text-white/75 md:block">
-        Funded on-chain · GitHub holds the work. Monad holds the pact.
-      </p>
     </div>
   );
 }
@@ -48,21 +52,28 @@ function HeroBackground() {
       <Image
         alt=""
         aria-hidden
-        className="object-cover object-center"
+        className="object-cover object-center saturate-[0.65] brightness-[0.92]"
         fill
         priority
         sizes="100vw"
         src="/hero-nature.jpg"
       />
+      {/*
+        A single top-down scrim, not a side wash: the composition is symmetric
+        now, so darkening one edge would tilt it. It resolves to the page ground
+        at the bottom so the section edge dissolves into the next one.
+      */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-[var(--ink)]/80 via-[var(--ink)]/50 to-[var(--ink)]/20"
+        className="absolute inset-0 bg-gradient-to-b from-[var(--paper)]/75 via-[var(--paper)]/25 to-[var(--paper)]"
       />
+      {/* The valley in this frame is its own light source and washes out the
+          headline where it crosses. A centred radial puts the contrast back
+          without flattening the photograph at the edges. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/55 via-transparent to-[var(--ink)]/25"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_58%_42%_at_50%_30%,rgba(23,23,33,0.45),transparent_70%)]"
       />
-      <div aria-hidden className="hero-grain pointer-events-none absolute inset-0 z-[1]" />
     </>
   );
 }
@@ -70,25 +81,25 @@ function HeroBackground() {
 export function HeroSection() {
   const reduced = useReducedMotion();
 
-  if (reduced) {
-    return (
-      <section className="relative min-h-[min(92vh,880px)] w-full overflow-hidden border-b border-[var(--rule)]">
-        <HeroBackground />
-        <HeroContent />
-      </section>
-    );
-  }
-
   return (
-    <section className="relative min-h-[min(92vh,880px)] w-full overflow-hidden border-b border-[var(--rule)]">
+    <section className={cn("relative w-full overflow-hidden", HERO_HEIGHT)}>
       <HeroBackground />
-      <motion.div
-        animate={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: 16 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
+      {reduced ? (
         <HeroContent />
-      </motion.div>
+      ) : (
+        <motion.div
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 16 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <HeroContent />
+        </motion.div>
+      )}
+
+      {/* Mercury pins its regulatory line to the foot of the hero; this is ours. */}
+      <div className="absolute inset-x-0 bottom-6 z-[2] flex justify-center px-5">
+        <TestnetNotice compact className="!text-white/55" />
+      </div>
     </section>
   );
 }
