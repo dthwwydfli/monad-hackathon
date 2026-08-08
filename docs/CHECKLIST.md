@@ -1,6 +1,8 @@
-# MergePact — Pre-submission checklist
+# commit — Pre-submission checklist
 
 See [SUBMISSION_CHECKLIST.md](./SUBMISSION_CHECKLIST.md) for the full gate list.
+
+On-chain contract name remains `MergePact.sol`; the app product name is **commit**.
 
 ## Quick deploy
 
@@ -20,11 +22,12 @@ echo 'NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x...' >> ../nextjs/.env.local
 
 # 5. Run app
 cd ../..
-npm run start
+yarn start
 ```
 
 ## Demo rehearsal
 
-- Browser A: maintainer wallet — create pact, release
+- **No wallet:** homepage or `/how-it-works` Try it simulation (fund → claim → proof → receipt)
+- Browser A: maintainer wallet — create commit, release
 - Browser B: contributor wallet — claim, submit proof
 - Browser C or projector: `/wall` — live updates

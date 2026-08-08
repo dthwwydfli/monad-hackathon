@@ -1,12 +1,14 @@
-# MergePact
+# commit
 
-Public, Testnet-only work commitments on Monad. A maintainer funds a GitHub issue; a contributor claims it, submits proof, and receives Testnet MON when approved.
+A public bounty board for GitHub issues on Monad testnet. A maintainer funds an issue; a contributor claims it, posts proof, and gets Testnet MON when the maintainer releases it.
 
 **Prototype only. Testnet MON has no cash value.**
 
+The on-chain contract is `MergePact.sol`; **commit** is the product name in the UI.
+
 ## Problem → solution
 
-| Pain | MergePact |
+| Pain | commit |
 | --- | --- |
 | Contributors can't verify a bounty is real | Maintainer locks Testnet MON in contract before anyone claims |
 | No visible ownership of work | On-chain assignment + proof URL + release event |
@@ -14,10 +16,12 @@ Public, Testnet-only work commitments on Monad. A maintainer funds a GitHub issu
 
 ## User journey
 
-1. Maintainer connects wallet on Monad Testnet (chain `10143`) and funds a pact at `/create`.
-2. Contributor browses open pacts at `/pacts`, claims one, does work on GitHub.
+1. Maintainer connects wallet on Monad Testnet (chain `10143`) and funds an issue at `/create`.
+2. Contributor browses open commits at `/pacts`, claims one, does work on GitHub.
 3. Contributor submits a public proof URL; maintainer reviews on GitHub and releases bounty.
 4. `/wall` shows live confirmed activity for demo observers.
+
+Try the interactive simulation on `/` or `/how-it-works` — no wallet required.
 
 ## Local setup
 
@@ -50,7 +54,7 @@ Chain ID: `10143` · RPC: `https://testnet-rpc.monad.xyz`
 
 ## Contract address
 
-Monad Testnet (MergePact): `0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
+Monad Testnet (`MergePact.sol`): `0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
 
 **Deploy status:** Simulated address from `DeployMergePactBroadcast` — broadcast pending. Fund deployer `0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6` via [Monad testnet faucet](https://testnet.monad.xyz/) (~0.15 MON more needed; ~0.28 MON total for deploy), then:
 
@@ -65,6 +69,8 @@ node scripts-js/generateTsAbis.js
 Set in `packages/nextjs/.env.local`:
 
 - `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
+
+Until broadcast succeeds, the live ledger on `/` may show zero counts or an RPC warning. The homepage **Try it** panel is a simulation and works without a configured contract.
 
 ## Test command
 
@@ -95,9 +101,11 @@ Set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` in the Vercel project environment b
 
 - [PRD](docs/PRD.md)
 - [Design](docs/DESIGN.md)
+- [Brand kit](docs/BRAND.md)
+- [How it works](docs/HOW_IT_WORKS.md)
 - [Demo script](docs/DEMO_SCRIPT.md)
 - [Submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
 ## Team credits
 
-Monad Blitz London hackathon — **MergePact**.
+Monad Blitz London hackathon — **commit** (MergePact contract).

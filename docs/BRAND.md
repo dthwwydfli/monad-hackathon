@@ -1,8 +1,10 @@
-# MergePact Brand Kit
+# commit Brand Kit
 
 ## Identity
 
-**The open engineering ledger** — calm, accountable, inspectable. Not a crypto trading terminal.
+**Funded GitHub work, visible on-chain** — calm, accountable, inspectable. Not a crypto trading terminal.
+
+Product name: **commit**. On-chain contract: `MergePact.sol`.
 
 ## Color tokens
 
@@ -33,8 +35,9 @@
 
 ## Component patterns
 
-- **Navigation:** Pill rail — logo left, centered rounded-full link rail on paper (`--paper` / `--rule`), active link as white inset pill; primary CTA is ink→action gradient pill with white arrow disc. On home hero: transparent header, solid paper pill rail, white logo + hero wallet styling until scroll
-- **Hero:** Mercury-inspired full-bleed background — calm nature photo with ink scrim + ~11% grain overlay; oversized headline and CTAs overlaid (light-on-dark text; not dark fintech dashboard)
+- **Navigation:** Link rail on paper routes; on home hero the header is fixed and fully transparent (white logo, links, wallet) until scroll, then paper bar returns
+- **Hero:** Full-bleed nature photo with ink scrim; oversized headline and CTAs overlaid (light-on-dark text)
+- **Try it demo:** Two-panel simulation on `/` and `/how-it-works` — fund → claim → proof → receipt; clearly labeled SIMULATION
 - **Cards:** 1px ink border, paper fill, hover lift + soft shadow
 - **Buttons:** Action blue primary; outlined secondary
 - **Badges:** Status stamps with state-specific fills
@@ -43,7 +46,7 @@
 ## Rejects
 
 - Dark dashboard hero, purple neon, glassmorphism, token charts, wallet-first hero
-- Fake live pact data on chain-backed routes
+- Fake live data on chain-backed routes
 
 ## Preview vs live
 
