@@ -135,6 +135,12 @@
   animation: mp-gradient-shift 18s ease-in-out infinite alternate;
 }
 
+.hero-grain {
+  opacity: 0.11;
+  background-image: url("/grain.svg");
+  background-size: 180px 180px;
+}
+
 @keyframes mp-gradient-shift {
   0% {
     opacity: 0.85;

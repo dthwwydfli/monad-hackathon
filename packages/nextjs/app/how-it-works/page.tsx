@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { LifecycleWalkthrough } from "~~/components/landing/LifecycleWalkthrough";
 import { TryItSection } from "~~/components/landing/demo/TryItSection";

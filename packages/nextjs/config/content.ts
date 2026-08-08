@@ -4,7 +4,7 @@ export const content = {
   heroEyebrow: "MONAD TESTNET · FUNDED GITHUB ISSUES",
   heroHeadline: "Get paid for GitHub work that's already funded.",
   heroBody:
-    "Put test tokens on an issue. Claim it, ship the fix on GitHub, post a proof link, and get paid when the maintainer releases it — all visible on-chain.",
+    "Lock testnet tokens on an issue — or claim one that's already funded. Ship the fix on GitHub, post a proof link, and get paid when the maintainer releases it. All visible on-chain.",
   headline: "Fund the issue. Everyone can see it.",
   body: "commit is a public bounty board for GitHub issues. GitHub is where you review the code. The chain shows who funded what, who claimed it, and whether it was paid.",
   testnetNote: "Prototype only. Testnet MON has no cash value.",
@@ -21,10 +21,8 @@ export const content = {
     acceptance: "Done when the receipt page shows a confirmed state after a contract write.",
   },
   demo: {
-    eyebrow: "TRY IT — NOTHING IS REAL",
     headline: "Two sides. Play both.",
     body: "Fund an issue on the left, take it on from the right. Type any GitHub URL and any amount — this whole panel is a simulation, so nothing here touches a wallet or the chain.",
-    stamp: "SIMULATION — NOT LIVE",
     disclaimer:
       "Simulated end to end. On Monad Testnet there is no AI reviewer and no auto-payout: a human maintainer reads the proof on GitHub and releases the bounty themselves.",
     fund: {

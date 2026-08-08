@@ -44,14 +44,7 @@ export function TryItSection({ id = "lifecycle", contained = true }: { id?: stri
   const inner = (
     <>
       <div>
-        <div className="flex flex-wrap items-center gap-3">
-          <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted-foreground)]">{copy.eyebrow}</p>
-          <span className="inline-flex items-center rounded-full border border-[var(--review)] bg-[rgba(238,155,0,0.14)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--review)]">
-            {copy.stamp}
-          </span>
-        </div>
-
-        <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="max-w-2xl text-3xl font-medium tracking-tight md:text-4xl">{copy.headline}</h2>
           {flow.state.stage !== "draft" && (
             <button

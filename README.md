@@ -1,29 +1,35 @@
 # commit
 
-A public bounty board for GitHub issues on Monad testnet. A maintainer funds an issue; a contributor claims it, posts proof, and gets Testnet MON when the maintainer releases it.
+A public bounty board for GitHub issues on Monad testnet. Maintainers fund issues. Contributors claim them, post proof, and get paid in Testnet MON when the maintainer approves.
 
 **Prototype only. Testnet MON has no cash value.**
 
-The on-chain contract is `MergePact.sol`; **commit** is the product name in the UI.
+The on-chain contract is `MergePact.sol`. **commit** is the product name in the UI.
 
-## Problem → solution
+## How it works
 
-| Pain | commit |
-| --- | --- |
-| Contributors can't verify a bounty is real | Maintainer locks Testnet MON in contract before anyone claims |
-| No visible ownership of work | On-chain assignment + proof URL + release event |
-| Trust requires a backend | Contract + events are the only source of truth |
+1. **Fund the issue.** A maintainer locks Testnet MON on a GitHub issue and writes what "done" looks like at `/create`.
+2. **Claim the work.** A contributor browses open bounties at `/pacts`, picks one, and claims it on-chain.
+3. **Post proof.** After shipping on GitHub, the contributor pastes a public PR or commit URL.
+4. **Release payment.** The maintainer reviews on GitHub and releases the locked Testnet MON.
 
-## User journey
+GitHub is where you review the code. The chain shows who funded what, who claimed it, and whether it was paid.
 
-1. Maintainer connects wallet on Monad Testnet (chain `10143`) and funds an issue at `/create`.
-2. Contributor browses open commits at `/pacts`, claims one, does work on GitHub.
-3. Contributor submits a public proof URL; maintainer reviews on GitHub and releases bounty.
-4. `/wall` shows live confirmed activity for demo observers.
+## Why this exists
 
-Try the interactive simulation on `/` or `/how-it-works` — no wallet required.
+- Bounties are locked on-chain before anyone starts work
+- Everyone can see who claimed what and whether it was paid
+- No backend. The contract handles the money flow.
 
-## Local setup
+## Try it without a wallet
+
+- `/` has an interactive demo and a live board preview
+- `/how-it-works` walks through the four steps
+- `/wall` shows live activity for demo observers
+
+No wallet needed for any of the above.
+
+## Run locally
 
 Requirements: Node >= 20.18.3, Yarn 3, Foundry.
 
@@ -41,7 +47,9 @@ cp packages/nextjs/.env.example packages/nextjs/.env.local
 yarn start
 ```
 
-## Monad Testnet deployment
+## Deploy to Monad Testnet
+
+Chain ID: `10143` · RPC: `https://testnet-rpc.monad.xyz`
 
 ```bash
 cd packages/foundry
@@ -50,37 +58,15 @@ DEPLOYER_PRIVATE_KEY=0x... forge script script/DeployMergePactBroadcast.s.sol:De
 node scripts-js/generateTsAbis.js
 ```
 
-Chain ID: `10143` · RPC: `https://testnet-rpc.monad.xyz`
-
-## Contract address
-
-Monad Testnet (`MergePact.sol`): `0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
-
-**Deploy status:** Simulated address from `DeployMergePactBroadcast` — broadcast pending. Fund deployer `0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6` via [Monad testnet faucet](https://testnet.monad.xyz/) (~0.15 MON more needed; ~0.28 MON total for deploy), then:
-
-```bash
-cd packages/foundry
-source .env
-forge script script/DeployMergePactBroadcast.s.sol:DeployMergePactBroadcast \
-  --rpc-url https://testnet-rpc.monad.xyz --broadcast --legacy
-node scripts-js/generateTsAbis.js
-```
+Contract address (`MergePact.sol`): `0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
 
 Set in `packages/nextjs/.env.local`:
 
-- `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
-
-Until broadcast succeeds, the live ledger on `/` may show zero counts or an RPC warning. The homepage **Try it** panel is a simulation and works without a configured contract.
-
-## Test command
-
-```bash
-yarn foundry:test --match-contract MergePactTest
+```
+NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x0091e2766bc15f02a058987fcb4afa114c7e88f8
 ```
 
-## Deployed app URL
-
-**Status:** Not deployed — Vercel CLI token invalid locally. Authenticate then deploy:
+## Deploy the frontend
 
 ```bash
 cd packages/nextjs
@@ -90,12 +76,18 @@ node ../../.yarn/releases/yarn-3.2.3.cjs vercel:yolo
 
 Set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` in the Vercel project environment before deploy.
 
-## Known limitations
+## Tests
 
-- No GitHub API integration; URLs are manual public evidence
-- Maintainer manually approves release after off-chain review
-- No dispute resolution or legal escrow
-- Testnet MON has no cash value
+```bash
+yarn foundry:test --match-contract MergePactTest
+```
+
+## Limitations
+
+- No GitHub API integration. URLs are manual public evidence.
+- Maintainer manually approves release after off-chain review.
+- No dispute resolution or legal escrow.
+- Testnet MON has no cash value.
 
 ## Docs
 
@@ -106,6 +98,6 @@ Set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` in the Vercel project environment b
 - [Demo script](docs/DEMO_SCRIPT.md)
 - [Submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
-## Team credits
+## Credits
 
-Monad Blitz London hackathon — **commit** (MergePact contract).
+Built for Monad Blitz London hackathon. **commit** (MergePact contract).

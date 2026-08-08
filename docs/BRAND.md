@@ -37,7 +37,7 @@ Product name: **commit**. On-chain contract: `MergePact.sol`.
 
 - **Navigation:** Link rail on paper routes; on home hero the header is fixed and fully transparent (white logo, links, wallet) until scroll, then paper bar returns
 - **Hero:** Full-bleed nature photo with ink scrim; oversized headline and CTAs overlaid (light-on-dark text)
-- **Try it demo:** Two-panel simulation on `/` and `/how-it-works` — fund → claim → proof → receipt; clearly labeled SIMULATION
+- **Try it demo:** Two-panel simulation on `/` and `/how-it-works` — fund → claim → proof → receipt; simulation called out in section body and disclaimer (no stamp badge)
 - **Cards:** 1px ink border, paper fill, hover lift + soft shadow
 - **Buttons:** Action blue primary; outlined secondary
 - **Badges:** Status stamps with state-specific fills

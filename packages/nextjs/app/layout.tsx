@@ -19,7 +19,8 @@ const ibmMono = IBM_Plex_Mono({
 
 export const metadata = getMetadata({
   title: "commit",
-  description: "Public Testnet work commitments on Monad. Fund the fix. Make the commitment visible.",
+  description:
+    "Fund GitHub issues on Monad Testnet. Lock the bounty, claim the work, post proof, release payment — all on-chain.",
 });
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
