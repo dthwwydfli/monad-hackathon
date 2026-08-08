@@ -1,3 +1,7 @@
 {
-  "networkName": "monad_testnet"
+  "networkName": "monad_testnet",
+  "MergePact": "0x0091e2766bc15f02a058987fcb4afa114c7e88f8",
+  "deployStatus": "simulated_pending_broadcast",
+  "deployer": "0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6",
+  "note": "Broadcast failed: insufficient MON (~0.28 required, ~0.13 available). Re-run after funding faucet."
 }

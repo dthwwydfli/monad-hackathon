@@ -50,11 +50,21 @@ Chain ID: `10143` · RPC: `https://testnet-rpc.monad.xyz`
 
 ## Contract address
 
-Monad Testnet (MergePact): _fund deployer wallet (~0.6 MON) then deploy_
+Monad Testnet (MergePact): `0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
 
-The broadcast script is ready at `packages/foundry/script/DeployMergePactBroadcast.s.sol`. After a successful deploy, run `node scripts-js/generateTsAbis.js` and set:
+**Deploy status:** Simulated address from `DeployMergePactBroadcast` — broadcast pending. Fund deployer `0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6` via [Monad testnet faucet](https://testnet.monad.xyz/) (~0.15 MON more needed; ~0.28 MON total for deploy), then:
 
-- `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` in `packages/nextjs/.env.local`
+```bash
+cd packages/foundry
+source .env
+forge script script/DeployMergePactBroadcast.s.sol:DeployMergePactBroadcast \
+  --rpc-url https://testnet-rpc.monad.xyz --broadcast --legacy
+node scripts-js/generateTsAbis.js
+```
+
+Set in `packages/nextjs/.env.local`:
+
+- `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS=0x0091e2766bc15f02a058987fcb4afa114c7e88f8`
 
 ## Test command
 
@@ -64,7 +74,15 @@ yarn foundry:test --match-contract MergePactTest
 
 ## Deployed app URL
 
-Deploy via `yarn vercel:yolo` and set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` on Vercel.
+**Status:** Not deployed — Vercel CLI token invalid locally. Authenticate then deploy:
+
+```bash
+cd packages/nextjs
+vercel login
+node ../../.yarn/releases/yarn-3.2.3.cjs vercel:yolo
+```
+
+Set `NEXT_PUBLIC_MERGEPACT_CONTRACT_ADDRESS` in the Vercel project environment before deploy.
 
 ## Known limitations
 
