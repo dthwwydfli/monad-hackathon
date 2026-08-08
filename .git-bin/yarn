@@ -1,0 +1,2 @@
+#!/bin/sh
+exec node "/Users/istiaqabdullah/monad-hackathon/.yarn/releases/yarn-3.2.3.cjs" "$@"

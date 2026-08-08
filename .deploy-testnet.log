@@ -1,0 +1,34 @@
+Polling for MON on 0x82AF2e2D2b7805C55FFc97159b28A7cEb9d67ba6
+Funded attempt 183 balance=1000000000000000000
+No files changed, compilation skipped
+Warning: Detected artifacts built from source files that no longer exist. Run `forge clean` to make sure builds are in sync with project files.
+ - /Users/istiaqabdullah/monad-hackathon/packages/foundry/contracts/YourContract.sol
+ - /Users/istiaqabdullah/monad-hackathon/packages/foundry/test/YourContract.t.sol
+Script ran successfully.
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 10143
+
+Estimated gas price: 102 gwei
+
+Estimated total gas used for script: 3555496
+
+Estimated amount required: 0.362660592 MON
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /Users/istiaqabdullah/monad-hackathon/packages/foundry/broadcast/Deploy.s.sol/10143/run-latest.json
+
+Sensitive values saved to: /Users/istiaqabdullah/monad-hackathon/packages/foundry/cache/Deploy.s.sol/10143/run-latest.json
+
+📝 Updated TypeScript contract definition file on ../nextjs/contracts/deployedContracts.ts
+CONTRACT=0xbd29254d7fc6c384ceb6c9ed6a57210f0eaf158d
+DEPLOY_COMPLETE
