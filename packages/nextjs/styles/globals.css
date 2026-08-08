@@ -103,6 +103,22 @@
   background-size: 200px 200px;
 }
 
+.hero-grain {
+  opacity: 0.11;
+  background-image: url("/grain.svg");
+  background-size: 160px 160px;
+  mix-blend-mode: overlay;
+}
+
+.nav-pill-rail {
+  backdrop-filter: none;
+}
+
+.nav-cta:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
+}
+
 .mp-card {
   @apply rounded-lg border border-[var(--ink)] bg-[var(--paper)] shadow-[var(--shadow-card)] transition-shadow duration-200;
 }

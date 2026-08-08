@@ -33,7 +33,8 @@
 
 ## Component patterns
 
-- **Hero:** Mercury-inspired full-bleed band — oversized headline, subcopy, primary CTA, testnet disclaimer, calm nature photography panel (light ledger palette; not dark fintech)
+- **Navigation:** Pill rail — logo left, centered rounded-full link rail on paper (`--paper` / `--rule`), active link as white inset pill; primary CTA is ink→action gradient pill with white arrow disc. On home hero: transparent header, solid paper pill rail, white logo + hero wallet styling until scroll
+- **Hero:** Mercury-inspired full-bleed background — calm nature photo with ink scrim + ~11% grain overlay; oversized headline and CTAs overlaid (light-on-dark text; not dark fintech dashboard)
 - **Cards:** 1px ink border, paper fill, hover lift + soft shadow
 - **Buttons:** Action blue primary; outlined secondary
 - **Badges:** Status stamps with state-specific fills

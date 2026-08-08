@@ -1,8 +1,13 @@
 import { content } from "~~/config/content";
+import { cn } from "~~/lib/cn";
 
-export function TestnetNotice({ compact = false }: { compact?: boolean }) {
+export function TestnetNotice({ compact = false, className }: { compact?: boolean; className?: string }) {
   if (compact) {
-    return <p className="font-mono text-xs uppercase tracking-[0.08em] text-[var(--ink)]/70">{content.testnetNote}</p>;
+    return (
+      <p className={cn("font-mono text-xs uppercase tracking-[0.08em] text-[var(--ink)]/70", className)}>
+        {content.testnetNote}
+      </p>
+    );
   }
 
   return (

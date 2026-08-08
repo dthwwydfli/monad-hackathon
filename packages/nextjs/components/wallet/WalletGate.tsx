@@ -5,7 +5,7 @@ import { useAccount, useChainId, useSwitchChain } from "wagmi";
 import { shortenAddress } from "~~/lib/format";
 import { FAUCET_URL, MONAD_TESTNET_CHAIN_ID } from "~~/lib/monad";
 
-export function WalletGate({ compact = false }: { compact?: boolean }) {
+export function WalletGate({ compact = false, onHero = false }: { compact?: boolean; onHero?: boolean }) {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const { switchChain, isPending } = useSwitchChain();
@@ -15,7 +15,15 @@ export function WalletGate({ compact = false }: { compact?: boolean }) {
     return (
       <ConnectButton.Custom>
         {({ openConnectModal }) => (
-          <button className="mp-btn mp-btn-secondary min-h-12" onClick={openConnectModal} type="button">
+          <button
+            className={
+              onHero
+                ? "mp-btn min-h-12 shrink-0 border border-white/40 bg-white/10 text-white hover:bg-white/20"
+                : "mp-btn mp-btn-secondary min-h-12 shrink-0"
+            }
+            onClick={openConnectModal}
+            type="button"
+          >
             Connect wallet
           </button>
         )}
@@ -37,9 +45,15 @@ export function WalletGate({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="flex items-center gap-2 rounded-full border border-[var(--rule)] bg-white/60 px-3 py-2 font-mono text-xs">
+    <div
+      className={
+        onHero
+          ? "flex max-w-[min(100%,220px)] shrink-0 items-center gap-2 rounded-full border border-white/30 bg-white/15 px-3 py-2 font-mono text-xs text-white backdrop-blur-sm sm:max-w-none"
+          : "flex max-w-[min(100%,220px)] shrink-0 items-center gap-2 rounded-full border border-[var(--rule)] bg-white/60 px-3 py-2 font-mono text-xs sm:max-w-none"
+      }
+    >
       {!compact && <span className="hidden sm:inline">Connected</span>}
-      <span>{shortenAddress(address ?? "", 4)} · Monad Testnet</span>
+      <span className="truncate">{shortenAddress(address ?? "", 4)} · Monad Testnet</span>
       <ConnectButton.Custom>
         {({ openAccountModal }) => (
           <button className="underline" onClick={openAccountModal} type="button">
